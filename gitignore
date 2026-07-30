@@ -1,0 +1,15 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+
+# Proje verisi (indirilen PDB, JSON, render çıktıları — büyük/tekrar üretilebilir)
+data/
+
+# Blender
+*.blend1
+*.blend2
+
+# İşletim sistemi
+.DS_Store
+Thumbs.db
