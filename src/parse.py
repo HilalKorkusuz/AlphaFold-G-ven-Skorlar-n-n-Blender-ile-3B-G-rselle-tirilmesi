@@ -1,10 +1,7 @@
 """
-Faz 0 - Adim 2: fetch.py ile indirilen .pdb dosyasindan REZIDU bazli
-pLDDT okuma.
-
-AlphaFold DB'nin PDB dosyalarinda pLDDT skoru, B-factor alanina yazilir.
-Ayni residudeki tum atomlar ayni pLDDT degerine sahip oldugu icin,
-her residunun CA (alfa karbon) atomundaki B-factor'u okumak yeterli.
+Kodun işlevi:
+fetch.py ile indirilen .pdb dosyasından REZİDÜ bazlı pLDDT (güven skoru) okur.
+AlphaFold, pLDDT skorunu PDB dosyasının B-factor alanına yazar. Aynı residüdeki tüm atomlar aynı pLDDT değerine sahip olduğu için, her residünün CA (alfa karbon) atomundaki B-factor'u okumak yeterli.
 
 Kullanim:
     python parse.py P69905.pdb
@@ -17,37 +14,38 @@ from Bio.PDB import PDBParser
 
 
 def load_residue_plddt(pdb_path: Path) -> list[tuple[int, str, float]]:
-    """
-    Bir PDB dosyasini acar, her residu icin (residu_no, aminoasit_adi, pLDDT)
-    ucluleri dondurur.
-    """
-    parser = PDBParser(QUIET=True)
-    structure = parser.get_structure("model", pdb_path)
+    # Bir PDB dosyasini acar, her residu icin (residu_no, aminoasit_adi, pLDDT) ucluleri dondurur.
 
+    parser = PDBParser(QUIET=True) # QUIET=True: bozuk/eksik PDB satırlarında konsolu uyarı mesajlarıyla doldurmasın
+    structure = parser.get_structure("model", pdb_path) # model, Biopython'un istediği bir isim etiketi
+ 
     residue_scores = []
-    for model in structure:
-        for chain in model:
-            for residue in chain:
-                if "CA" not in residue:
-                    # su molekulu, ligand gibi standart olmayan kalintilari atla
+    for model in structure: # PDB dosyaları birden fazla model içerebilir (NMR yapılarında olur), biz genelde tek model bekliyoruz
+        for chain in model:  # bir model, birden fazla zincirden oluşabilir (örn. hemoglobin: A, B, C, D)
+            for residue in chain:  # bir zincir, sırayla dizilmiş residülerden (aminoasitlerden) oluşur
+                if "CA" not in residue:  # su molekülü, ligand gibi standart olmayan kalıntıları atla-- bunların CA (alfa karbon) atomu yok
                     continue
                 ca_atom = residue["CA"]
                 residue_scores.append(
                     (residue.id[1], residue.resname, ca_atom.get_bfactor())
+                    # residue.id[1] = residü numarası, 
+                    # residue.resname = aminoasit adı (örn. "MET"), 
+                    # get_bfactor() = pLDDT değeri
                 )
     return residue_scores
 
 
-def summarize(residue_scores: list[tuple[int, str, float]]) -> None:
+def summarize(residue_scores: list[tuple[int, str, float]]) -> None: # residue_scores listesini alıp ortalama/min/max/dağılım özetini ekrana yazdırır.
     if not residue_scores:
         print("Hicbir residu bulunamadi.")
         return
 
-    scores = [s for _, _, s in residue_scores]
+    scores = [s for _, _, s in residue_scores] # listedeki her üçlüden sadece pLDDT değerini (3. eleman) ayıklıyor
     print(f"Toplam residu sayisi: {len(scores)}")
     print(f"Ortalama pLDDT: {sum(scores) / len(scores):.1f}")
     print(f"En dusuk: {min(scores):.1f}   En yuksek: {max(scores):.1f}")
 
+    # AlphaFold'un resmi pLDDT eşiklerine göre kaç residü hangi kategoride, onu sayıyoruz
     very_high = sum(1 for s in scores if s > 90)
     confident = sum(1 for s in scores if 70 < s <= 90)
     low = sum(1 for s in scores if 50 < s <= 70)
@@ -64,7 +62,7 @@ def summarize(residue_scores: list[tuple[int, str, float]]) -> None:
         print(f"  {res_no:>4} {res_name:>3}  pLDDT={score:.1f}")
 
 
-def main():
+def main(): # TERMINALDEN DOGRUDAN calistirildiginda devreye giren kisim
     if len(sys.argv) != 2:
         print("Kullanim: python parse.py <indirilen_dosya.pdb>")
         sys.exit(1)
@@ -72,7 +70,6 @@ def main():
     pdb_path = Path(sys.argv[1])
     residue_scores = load_residue_plddt(pdb_path)
     summarize(residue_scores)
-
-
+    # Burası ekranda görülecek özet bilgilerin yazdırıldığı kısım.
 if __name__ == "__main__":
     main()

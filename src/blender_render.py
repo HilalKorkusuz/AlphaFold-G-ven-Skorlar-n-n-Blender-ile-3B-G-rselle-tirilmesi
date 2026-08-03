@@ -1,17 +1,17 @@
 """
-Faz 1 - Adim 5: scene.json'u okuyup, pLDDT'ye gore renklendirilmis
-bir protein render'i uretir.
+Kodun işlevi:
+scene.json'u okuyup, pLDDT veya RMSD sapma verisine göre renklendirilmiş
+bir protein render'i üretir.
 
-Bu script normal Python'la degil, BLENDER'IN KENDI ICINDEKI Python
-yorumlayicisiyla calisir. Terminalden degil, Blender uzerinden
-calistirilir -- asagidaki komuta bak.
+Bu script normal Python'la değil, BLENDER'IN KENDİ İÇİNDEKİ Python
+yorumlayıcısıyla çalışır. Terminalden değil, Blender üzerinden çalıştırılır.
 
-Kullanim (terminalden, Blender kurulu oldugu varsayilarak):
-    blender --background --python blender_render.py -- data/scene_P69905.json
+Kullanım (terminalden, Blender kurulu olduğu varsayılarak):
+    blender --background --python blender_render.py -- data/scene_P69905.json [plddt|deviation]
 
---background : Blender'i arayuz acmadan, arka planda calistirir
---python     : bu dosyayi Blender'in Python yorumlayicisiyla calistir
---           : bundan sonraki argumanlar Blender'a degil, bu script'e gider
+--background : Blender'i arayüz açmadan, arka planda çalıştırır
+--python     : bu dosyayı Blender'in Python yorumlayıcısıyla çalıştır
+--           : bundan sonraki argümanlar Blender'a değil, bu script'e gider
 """
 
 import json
@@ -22,28 +22,18 @@ import bpy
 
 
 def parse_args() -> tuple[Path, str]:
-    """
-    Komut satirindaki '--' isaretinden sonraki argumanlari okur.
-
-    Beklenen kullanim:
-        blender --background --python blender_render.py -- <scene.json> [renk_modu]
-
-    renk_modu: "plddt" (varsayilan) veya "deviation" -- hangi veriye gore
-    renklendirme yapilacagini secer. "deviation" secilirse, scene.json'un
-    align.py verisiyle uretilmis olmasi gerekir (yoksa tum kureler gri olur).
-    """
+    # Komut satırındaki '--' işaretinden sonraki argümanları okur: scene.json yolu + renk_modu
     if "--" not in sys.argv:
         raise ValueError("Kullanim: blender --background --python blender_render.py -- <scene.json> [plddt|deviation]")
     args_after_dashdash = sys.argv[sys.argv.index("--") + 1:]
     if not args_after_dashdash:
         raise ValueError("Scene dosyasinin yolunu belirtmelisin.")
 
-    # .resolve() goreli yolu (orn. ..\data\scene.json) MUTLAK yola cevirir.
-    # Bunu yapmazsak, cikti dosyasi Blender'in kendi calisma dizinine gore
-    # kaydedilir -- bu da terminaldeki bulundugun klasorden FARKLI olabilir
-    # ve dosyayi "kaybetmis" gibi hissettirir.
+    # .resolve() göreli yolu (örn. ..\data\scene.json) MUTLAK yola çevirir --
+    # yoksa çıktı dosyası Blender'ın kendi çalışma dizinine göre kaydedilebilir
+    # (bu, daha önce "render'ı bulamıyorum" hatasına sebep olan şeydi)
     scene_path = Path(args_after_dashdash[0]).resolve()
-    color_mode = args_after_dashdash[1] if len(args_after_dashdash) > 1 else "plddt"
+    color_mode = args_after_dashdash[1] if len(args_after_dashdash) > 1 else "plddt"  # verilmezse varsayılan plddt
 
     if color_mode not in ("plddt", "deviation"):
         raise ValueError(f"Bilinmeyen renk modu: {color_mode!r} (plddt veya deviation olmali)")
@@ -52,35 +42,28 @@ def parse_args() -> tuple[Path, str]:
 
 
 def clear_scene() -> None:
-    """Blender'in varsayilan sahnesindeki kup/isik/kamerayi temizler."""
+    # Blender'ın varsayılan sahnesindeki küp/ışık/kamerayı temizler.
     bpy.ops.object.select_all(action="SELECT")
     bpy.ops.object.delete(use_global=False)
 
 
 def add_residue_sphere(position: list[float], color: list[float], name: str) -> bpy.types.Object:
-    """
-    Bir rezidu icin, verilen konumda ve renkte kucuk bir kure olusturur.
-
-    Materyal, Principled BSDF node'u uzerinden kuruluyor (sadece
-    diffuse_color degil) -- bu, gercek isik/golge/yansima hesaplarina
-    giren asil parametre. Hafif parlak (dusuk roughness), metalik
-    olmayan bir "cilali plastik/seramik" gorunumu hedefliyoruz --
-    bilimsel molekul gorsellerinde yaygin bir stil.
-    """
+    # Bir residü için, verilen konumda ve renkte küçük bir küre oluşturur.
     bpy.ops.mesh.primitive_uv_sphere_add(radius=0.4, location=position, segments=32, ring_count=16)
     sphere = bpy.context.active_object
     sphere.name = name
-    bpy.ops.object.shade_smooth()
+    bpy.ops.object.shade_smooth()  # yüzeyi pürüzsüz gösterir, köşeli/faceted görünümü kaldırır
 
+    # Materyal, Principled BSDF node'u üzerinden kuruluyor (basit diffuse_color
+    # ATAMASI DEĞİL) -- bu, gerçek ışık/gölge/yansıma hesaplarına giren asıl
+    # parametre. Düşük roughness + biraz specular = "cilalı seramik" görünümü.
     material = bpy.data.materials.new(name=f"mat_{name}")
     material.use_nodes = True
     bsdf = material.node_tree.nodes.get("Principled BSDF")
     bsdf.inputs["Base Color"].default_value = (*color, 1.0)
     bsdf.inputs["Roughness"].default_value = 0.25
     bsdf.inputs["Metallic"].default_value = 0.0
-    # Bazi Blender surumlerinde "Specular"/"Specular IOR Level" adiyla gecer;
-    # ikisini de dene, hangisi varsa onu kullan (surumler arasi uyumluluk).
-    for spec_key in ("Specular IOR Level", "Specular"):
+    for spec_key in ("Specular IOR Level", "Specular"):  # Blender sürümüne göre isim değişiyor, ikisini de dene
         if spec_key in bsdf.inputs:
             bsdf.inputs[spec_key].default_value = 0.6
             break
@@ -90,32 +73,27 @@ def add_residue_sphere(position: list[float], color: list[float], name: str) -> 
 
 
 def add_backbone_curve(positions: list[list[float]]) -> None:
-    """
-    Rezidu merkezlerini birbirine baglayan, PURUZSUZ bir omurga eğrisi cizer.
-
-    Onceki versiyon duz cizgilerle (POLY spline) baglıyordu -- bu, heliks
-    gibi kivrimli bolgelerde "zikzak" gibi gorunuyordu. NURBS spline,
-    noktalar arasindan yumusak bir egri gecirerek daha gercekci bir
-    "tup" gorunumu verir.
-    """
+    # Residü merkezlerini birbirine bağlayan, PÜRÜZSÜZ bir omurga eğrisi çizer.
+    # NURBS spline kullanıyoruz (düz çizgi/POLY değil) -- heliks gibi kıvrımlı
+    # bölgelerde düz çizgiler "zikzak" gibi görünüyordu, NURBS yumuşak bir tüp verir.
     curve_data = bpy.data.curves.new("backbone", type="CURVE")
     curve_data.dimensions = "3D"
-    curve_data.bevel_depth = 0.15  # egriye kalinlik verir
-    curve_data.resolution_u = 12   # noktalar arasi kac ara adim hesaplanacak (yumusaklik)
+    curve_data.bevel_depth = 0.15  # eğriye kalınlık verir
+    curve_data.resolution_u = 12   # noktalar arası kaç ara adım hesaplanacak (yumuşaklık)
 
     spline = curve_data.splines.new("NURBS")
     spline.points.add(len(positions) - 1)
     for i, pos in enumerate(positions):
-        spline.points[i].co = (*pos, 1.0)  # 4. deger (w) spline agirligi
+        spline.points[i].co = (*pos, 1.0)  # 4. değer (w) spline ağırlığı, NURBS için gerekli
 
-    spline.use_endpoint_u = True   # egrinin ilk/son noktadan baslayip bitmesini saglar
-    spline.order_u = min(4, len(positions))  # yumusatma derecesi
+    spline.use_endpoint_u = True             # eğrinin ilk/son noktadan başlayıp bitmesini sağlar
+    spline.order_u = min(4, len(positions))  # yumuşatma derecesi
 
     curve_obj = bpy.data.objects.new("backbone_curve", curve_data)
     bpy.context.collection.objects.link(curve_obj)
 
-    # omurgaya notr, hafif metalik-gri bir materyal ver -- kurelerin
-    # rengiyle yarismasin, sadece yapiyi "tasiyan" bir iskelet gibi dursun
+    # omurgaya nötr, hafif metalik-gri bir materyal ver -- kürelerin
+    # rengiyle yarışmasın, sadece yapıyı "taşıyan" bir iskelet gibi dursun
     material = bpy.data.materials.new(name="mat_backbone")
     material.use_nodes = True
     bsdf = material.node_tree.nodes.get("Principled BSDF")
@@ -126,16 +104,13 @@ def add_backbone_curve(positions: list[list[float]]) -> None:
 
 
 def setup_camera(center: list[float], positions: list[list[float]]) -> float:
-    """
-    Proteinin gercek boyutuna gore otomatik uzaklikta, ORTOGRAFIK bir
-    kamera kurar. Ortografik kamera perspektif carpitmasi yapmaz -- uzaktaki
-    ve yakindaki rezidular ayni olcekte gorunur, bu da bilimsel gorsellerde
-    tercih edilen bir sunum sekli.
-
-    Donen "span" degeri, isik kurulumunda da mesafe hesaplamak icin
-    disari veriliyor -- boylece isik/kamera hep proteinin boyutuna
-    orantili kalir, protein degistiginde elle ayar yapmaya gerek kalmaz.
-    """
+    # Proteinin gerçek boyutuna göre otomatik uzaklıkta, ORTOGRAFIK bir kamera
+    # kurar (perspektif çarpıtması yapmaz -- uzaktaki/yakındaki residüler aynı
+    # ölçekte görünür, bilimsel görsellerde tercih edilen sunum şekli).
+    #
+    # Dönen "span" değeri, ışık kurulumunda da mesafe hesaplamak için dışarı
+    # veriliyor -- böylece ışık/kamera hep proteinin boyutuna orantılı kalır,
+    # protein değiştiğinde elle ayar yapmaya gerek kalmaz.
     import mathutils
 
     xs = [p[0] for p in positions]
@@ -143,10 +118,9 @@ def setup_camera(center: list[float], positions: list[list[float]]) -> float:
     zs = [p[2] for p in positions]
     span = max(max(xs) - min(xs), max(ys) - min(ys), max(zs) - min(zs))
 
-    # kamera yonu: -Y (onden), +X (sagdan), +Z (ustten) karisimi --
-    # bu vektoru degistirerek acidan oynayabilirsin (normalize ediliyor,
-    # sadece ORANLAR onemli)
     distance = span * 1.5 + 10
+    # kamera yönü: -Y (önden) + X (sağdan) + Z (üstten) karışımı --
+    # bu üç sayıyı değiştirerek açıdan oynayabilirsin (normalize ediliyor, sadece ORANLAR önemli)
     direction_vector = mathutils.Vector((0.45, -0.75, 0.55)).normalized()
     camera_location = mathutils.Vector(center) + direction_vector * distance
 
@@ -157,26 +131,27 @@ def setup_camera(center: list[float], positions: list[list[float]]) -> float:
     bpy.context.scene.camera = camera
 
     direction = mathutils.Vector(center) - camera_location
-    camera.rotation_euler = direction.to_track_quat("-Z", "Y").to_euler()
+    camera.rotation_euler = direction.to_track_quat("-Z", "Y").to_euler()  # kamerayı merkeze doğru çevir
 
     return span
 
 
-def setup_lighting(center: list[float], span: float) -> None:
-    """
-    Uc noktali (three-point) isiklandirma kurar -- fotografcilikta
-    standart bir teknik:
-      - KEY   : ana isik, guclu, yandan-ustten geliyor, ana golgeleri olusturur
-      - FILL  : karsi yondan gelen, daha zayif bir isik -- key'in olusturdugu
-                sert golgeleri yumusatir, tum sahnenin "duz karanlik" kalan
-                tarafini hafifce aydinlatir
-      - RIM   : arkadan gelen isik -- objenin kenarlarini hafifce
-                aydinlatip arka plandan ayristirir ("kontur isigi")
+def _point_light_at(light_object: bpy.types.Object, target: list[float]) -> None:
+    # Verilen ışık objesini, target konumuna bakacak şekilde döndürür.
+    import mathutils
+    direction = mathutils.Vector(target) - light_object.location
+    light_object.rotation_euler = direction.to_track_quat("-Z", "Y").to_euler()
 
-    Tek bir SUN isigina kiyasla, bu kurulum golgeleri daha yumusak ve
-    molekulun 3B hacmini daha okunakli hale getirir.
-    """
-    # KEY: ana isik, sag-ust-onden -- baskin isik kaynagi, ana golgeleri o olusturur
+
+def setup_lighting(center: list[float], span: float) -> None:
+    # Üç noktalı (three-point) ışıklandırma kurar -- fotoğrafçılıkta standart bir teknik:
+    #   KEY  : ana ışık, güçlü, ana gölgeleri o oluşturur
+    #   FILL : karşı yönden gelen zayıf ışık, key'in sert gölgelerini yumuşatır
+    #   RIM  : arkadan gelen ışık, kenarları arka plandan ayrıştırır
+    # Tek bir SUN ışığına kıyasla, bu kurulum gölgeleri daha yumuşak ve
+    # molekülün 3B hacmini daha okunaklı hale getirir.
+
+    # KEY: ana ışık, sağ-üst-önden -- baskın kaynak, ana gölgeleri o oluşturur
     bpy.ops.object.light_add(
         type="AREA",
         location=(center[0] + span * 0.8, center[1] - span * 0.6, center[2] + span * 0.9),
@@ -186,8 +161,8 @@ def setup_lighting(center: list[float], span: float) -> None:
     key_light.data.size = span * 0.35
     _point_light_at(key_light, center)
 
-    # FILL: cok zayif isik, sol-alttan -- sadece key'in golgelerini tamamen
-    # karanliga gomulmekten kurtarir, kendi golgesini olusturmayacak kadar zayif
+    # FILL: çok zayıf ışık, sol-alttan -- kendi gölgesini oluşturmayacak kadar
+    # zayıf, sadece key'in gölgelerinin tamamen karanlığa gömülmesini önler
     bpy.ops.object.light_add(
         type="AREA",
         location=(center[0] - span * 0.9, center[1] - span * 0.3, center[2] - span * 0.2),
@@ -197,7 +172,7 @@ def setup_lighting(center: list[float], span: float) -> None:
     fill_light.data.size = span * 0.8
     _point_light_at(fill_light, center)
 
-    # RIM: arkadan, kenarlari hafifce aydinlatmak icin -- yine zayif
+    # RIM: arkadan, kenarları hafifçe aydınlatmak için -- yine zayıf
     bpy.ops.object.light_add(
         type="AREA",
         location=(center[0], center[1] + span * 1.2, center[2] + span * 0.4),
@@ -207,8 +182,8 @@ def setup_lighting(center: list[float], span: float) -> None:
     rim_light.data.size = span * 0.3
     _point_light_at(rim_light, center)
 
-    # arka plani duz siyah yerine hafif koyu-gri/mavimsi bir tona getir --
-    # tamamen siyah, molekulun koyu renkli kenarlarini yutabiliyor
+    # arka planı düz siyah yerine orta tonlu gri yaptık -- tamamen siyah,
+    # molekülün koyu renkli kenarlarını görünmez kılıyordu
     world = bpy.context.scene.world
     if world is None:
         world = bpy.data.worlds.new("World")
@@ -220,40 +195,29 @@ def setup_lighting(center: list[float], span: float) -> None:
         bg_node.inputs["Strength"].default_value = 1.0
 
 
-def _point_light_at(light_object: bpy.types.Object, target: list[float]) -> None:
-    """Verilen isik objesini, target konumuna bakacak sekilde dondurur."""
-    import mathutils
-    direction = mathutils.Vector(target) - light_object.location
-    light_object.rotation_euler = direction.to_track_quat("-Z", "Y").to_euler()
-
-
 def configure_render_quality() -> None:
-    """
-    Render motorunu ve kalite ayarlarini yapilandirir.
-
-    EEVEE kullaniyoruz -- Cycles'a gore cok daha hizli (ekran karti
-    hizlandirmali, gercek zamanli render motoru). Kalite farki tek kare
-    statik render'larda gozle pek fark edilmiyordu ama render suresi
-    onemli olcude artiyordu, bu yuzden performansi onceliklendirdik.
-    """
+    # Render motorunu seçer. EEVEE kullanıyoruz -- Cycles'a göre çok daha
+    # hızlı (ekran kartı hızlandırmalı, gerçek zamanlı motor). Cycles'ı
+    # denedik, kalite farkı tek kare statik render'da gözle pek fark
+    # edilmiyordu ama süre belirgin arttığı için performansı önceliklendirdik.
     scene = bpy.context.scene
-    # Blender surumune gore EEVEE'nin adi degisebiliyor (4.2+ 'BLENDER_EEVEE_NEXT')
     available_engines = {e.identifier for e in bpy.types.RenderSettings.bl_rna.properties["engine"].enum_items}
-    if "BLENDER_EEVEE_NEXT" in available_engines:
+    if "BLENDER_EEVEE_NEXT" in available_engines:  # Blender surumune gore EEVEE'nin adi degisiyor (4.2+)
         scene.render.engine = "BLENDER_EEVEE_NEXT"
     else:
         scene.render.engine = "BLENDER_EEVEE"
 
 
 def render_scene(scene_path: Path, output_path: Path, color_mode: str = "plddt") -> None:
+    # Tüm parçaları bir araya getirip render alan ana fonksiyon.
     with open(scene_path) as f:
         scene_data = json.load(f)
 
     residues = scene_data["residues"]
     positions = [r["position"] for r in residues]
 
-    # renk modu "deviation" ise ve o rezidu icin sapma verisi yoksa (deneysel
-    # karsiligi bulunamamis), scene.py'nin atadigi gri renk zaten kullanilir
+    # renk modu "deviation" ise ve o residü için sapma verisi yoksa (deneysel
+    # karşılığı bulunamamış), scene.py'nin atadığı gri renk zaten kullanılır
     color_field = "color" if color_mode == "plddt" else "deviation_color"
 
     clear_scene()
@@ -267,7 +231,7 @@ def render_scene(scene_path: Path, output_path: Path, color_mode: str = "plddt")
 
     add_backbone_curve(positions)
 
-    center = [sum(p[i] for p in positions) / len(positions) for i in range(3)]
+    center = [sum(p[i] for p in positions) / len(positions) for i in range(3)]  # residü konumlarının ortalaması
     span = setup_camera(center, positions)
     setup_lighting(center, span)
     configure_render_quality()
@@ -279,9 +243,9 @@ def render_scene(scene_path: Path, output_path: Path, color_mode: str = "plddt")
     print(f"Render kaydedildi: {output_path}")
 
 
-def main():
+def main():  # TERMINALDEN DOGRUDAN calistirildiginda devreye giren kisim
     scene_path, color_mode = parse_args()
-    output_path = scene_path.parent / f"{scene_path.stem}_render_{color_mode}.png"
+    output_path = scene_path.parent / f"{scene_path.stem}_render_{color_mode}.png"  # dosya adına renk modunu ekliyoruz, plddt/deviation render'ları birbirinin üzerine yazmasın diye
     render_scene(scene_path, output_path, color_mode)
 
 

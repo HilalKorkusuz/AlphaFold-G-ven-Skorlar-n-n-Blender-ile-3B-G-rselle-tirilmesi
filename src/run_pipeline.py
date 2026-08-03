@@ -1,11 +1,9 @@
 """
-Faz 0'i tek komutla calistiran birlestirici script.
-
-Once fetch.py'deki veri cekme adimini, sonra parse.py'deki rezidu
-bazli pLDDT okuma adimini sirayla calistirir.
+Kodun işlevi:
+fetch.py + parse.py adımlarını tek komutla sırayla çalıştıran birleştirici script.
 
 Kullanim:
-    py -3 run_pipeline.py P69905
+    python run_pipeline.py P69905
 """
 
 import sys
@@ -15,7 +13,7 @@ from fetch import fetch_alphafold_entry
 from parse import load_residue_plddt, summarize
 
 
-def run(uniprot_id: str) -> None:
+def run(uniprot_id: str) -> None:  # Bu dosya kendi başına bir analiz YAPMIYOR. Sadece fetch.py ve parse.py'deki hazır fonksiyonları import edip sırayla çağırıyor.
     print(f"=== Adim 1: {uniprot_id} icin veri cekiliyor ===")
     entry = fetch_alphafold_entry(uniprot_id)
     print(f"Indirildi: {entry.pdb_path}")
@@ -24,6 +22,7 @@ def run(uniprot_id: str) -> None:
     print(f"\n=== Adim 2: Rezidu bazli pLDDT okunuyor ===")
     residue_scores = load_residue_plddt(entry.pdb_path)
     summarize(residue_scores)
+    #çıktı olarak terminalde görülecek kısım
 
 
 def main():

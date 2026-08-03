@@ -1,15 +1,16 @@
 """
-Faz 1 - Adim 4: pLDDT skorlarini Blender'in kullanacagi bir "sahne
-dosyasina" (scene.json) donusturur.
-
-Renkler, AlphaFold'un resmi pLDDT skalasiyla ayni esikleri kullanir:
-    >90   -> mavi   (cok yuksek)
-    70-90 -> turkuaz (guvenilir)
-    50-70 -> sari   (dusuk)
-    <50   -> turuncu (cok dusuk)
-
-Kullanim:
-    py -3 scene.py P69905
+Kodun işlevi:
+pLDDT skorlarını (ve varsa align.py'nin ürettiği RMSD sapma verisini) Blender'ın kullanacağı bir "sahne dosyasına" (scene.json) dönüştürür.
+ 
+Renkler, AlphaFold'un resmi pLDDT skalasıyla aynı eşikleri kullanır:
+    >90   -> mavi   (çok yüksek)
+    70-90 -> turkuaz (güvenilir)
+    50-70 -> sarı   (düşük)
+    <50   -> turuncu (çok düşük)
+ 
+Kullanım:
+    python scene.py P69905
+    python scene.py P69905 ../data/alignment_P69905_2HHB.json   (RMSD katmanı dahil)
 """
 
 import json

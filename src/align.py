@@ -1,17 +1,11 @@
 """
-Faz 3: AlphaFold tahminini deneysel bir PDB yapisiyla karsilastirir.
 
-Adimlar:
-    1. RCSB'den deneysel yapiyi indirir (AlphaFold DB'den farkli bir kaynak)
-    2. Iki yapinin ortak rezidulerindeki CA atomlarini eslestirir
-    3. Superimposer ile en iyi hizalamayi bulur, GLOBAL RMSD hesaplar
-    4. Hizalama sonrasi her rezidunun ne kadar "kaydigini" (lokal sapma)
-       hesaplar -- bu, ikinci bir renk katmani olarak kullanilacak
+Kodun işlevi:
+AlphaFold tahminini, RCSB'den indirilen deneysel bir PDB yapısıyla karşılaştırır ve iki yapı arasındaki farkı (RMSD) hesaplar.
 
 Kullanim:
-    py -3 align.py P69905 2HHB B
-    (son parametre: deneysel yapida hangi zinciri kullanacagimiz --
-     hemoglobin gibi cok-zincirli proteinlerde bunu belirtmek gerekir)
+    python align.py P69905 2HHB B
+    (son parametre: deneysel yapida hangi zinciri kullanacagimiz.Hemoglobin gibi cok-zincirli proteinlerde bunu belirtmek gerekir)
 """
 
 import json
@@ -26,9 +20,9 @@ RCSB_DOWNLOAD_URL = "https://files.rcsb.org/download/{pdb_id}.pdb"
 
 
 def download_experimental_structure(pdb_id: str, output_dir: Path = DATA_DIR) -> Path:
-    """RCSB PDB'den deneysel bir yapiyi indirir."""
+    # RCSB PDB'den deneysel bir yapiyi indirir.
     output_dir.mkdir(parents=True, exist_ok=True)
-    destination = output_dir / f"{pdb_id}_experimental.pdb"
+    destination = output_dir / f"{pdb_id}_experimental.pdb" #experimental" eki: aynı UniProt ID'yle karışmasın diye
 
     url = RCSB_DOWNLOAD_URL.format(pdb_id=pdb_id)
     response = requests.get(url, timeout=30)
@@ -40,12 +34,8 @@ def download_experimental_structure(pdb_id: str, output_dir: Path = DATA_DIR) ->
 
 def get_ca_residues(pdb_path: Path, chain_id: str) -> dict[int, tuple["Atom", str]]:
     """
-    Bir PDB dosyasindaki belirli bir zincirin CA atomlarini VE aminoasit
-    isimlerini, rezidu numarasina gore bir sozlukte toplar.
-
-    Isim bilgisini de tutuyoruz cunku sadece numaraya guvenmek riskli --
-    bazi deneysel yapilarda ilk Metionin kesilmis olabilir, bu da tum
-    numaralandirmayi kaydirir (asagidaki find_best_offset bunu duzeltir).
+    Bir PDB dosyasindaki belirli bir zincirin CA atomlarini VE aminoasit isimlerini, rezidu numarasina gore bir sozlukte toplar.
+    Isim bilgisini de tutuyoruz cunku sadece numaraya guvenmek riskli. Bazi deneysel yapilarda ilk Metionin kesilmis olabilir, bu da tum numaralandirmayi kaydirir (asagidaki find_best_offset bunu duzeltir).
     """
     parser = PDBParser(QUIET=True)
     structure = parser.get_structure("model", pdb_path)
@@ -59,11 +49,11 @@ def get_ca_residues(pdb_path: Path, chain_id: str) -> dict[int, tuple["Atom", st
                 if "CA" not in residue:
                     continue
                 residues[residue.id[1]] = (residue["CA"], residue.resname)
-        break
+        break # sadece ilk modeli kullan (deneysel yapılarda genelde tek model olur)
 
     return residues
 
-
+ #3 harfli aminoasit kodunu (PDB dosyalarının kullandığı, örn. "MET") 1 harfli koda (örn. "M") çeviren kod.
 THREE_TO_ONE = {
     "ALA": "A", "ARG": "R", "ASN": "N", "ASP": "D", "CYS": "C",
     "GLN": "Q", "GLU": "E", "GLY": "G", "HIS": "H", "ILE": "I",
@@ -77,39 +67,30 @@ def match_residues_by_sequence(
     experimental: dict[int, tuple["Atom", str]],
 ) -> list[tuple[int, int]]:
     """
-    Iki rezidu kumesini, GERCEK bir dizi hizalamasi (sequence alignment)
-    kullanarak eslestirir. Sabit bir kaymadan (offset) farkli olarak,
-    bu yontem BOSLUKLARA izin verir -- deneysel yapilarda sik gorulen
-    "bu bolge kristalde gorunmuyor" durumunu dogru sekilde atlar.
-
-    Donen deger: [(predicted_res_id, experimental_res_id), ...] ciftleri.
+    Iki rezidu kumesini, GERCEK bir dizi hizalamasi (sequence alignment) kullanarak eslestirir. Sabit bir kaymadan (offset) farkli olarak, bu yontem BOSLUKLARA izin verir -- deneysel yapilarda sik gorulen "bu bolge kristalde gorunmuyor" durumunu dogru sekilde atlar.
     """
     from Bio.Align import PairwiseAligner
 
-    pred_ids = sorted(predicted.keys())
-    exp_ids = sorted(experimental.keys())
-
-    pred_seq = "".join(THREE_TO_ONE.get(predicted[i][1], "X") for i in pred_ids)
+    pred_seq = "".join(THREE_TO_ONE.get(predicted[i][1], "X") for i in pred_ids)  # "X": bilinmeyen/standart olmayan aminoasit
     exp_seq = "".join(THREE_TO_ONE.get(experimental[i][1], "X") for i in exp_ids)
-
+ 
     aligner = PairwiseAligner()
-    aligner.mode = "global"
-    aligner.match_score = 2
-    aligner.mismatch_score = -1
-    aligner.open_gap_score = -5
-    aligner.extend_gap_score = -0.5
-
-    alignment = aligner.align(pred_seq, exp_seq)[0]
+    aligner.mode = "global"           # dizinin BAŞTAN SONA tamamını hizala (sadece en benzer parçayı değil)
+    aligner.match_score = 2           # aynı aminoasit eşleşirse puan ver
+    aligner.mismatch_score = -1       # farklı aminoasit eşleşirse puan kır
+    aligner.open_gap_score = -5       # yeni bir boşluk açmak pahalı (gereksiz yere boşluk açmasın diye)
+    aligner.extend_gap_score = -0.5   # mevcut bir boşluğu uzatmak daha ucuz (bir kez boşluk açtıysa devam etmesi mantıklı)
+ 
+    alignment = aligner.align(pred_seq, exp_seq)[0]  # en iyi skorlu hizalamayı al
     pred_aligned, exp_aligned = alignment.aligned
-
-    # 'aligned' bize, bosluksuz eslesen BLOK araliklarini verir
-    # (baslangic, bitis) ciftleri halinde -- bunlari tek tek rezidu
-    # ciftlerine aciyoruz
+ 
+    # 'aligned', boşluksuz eşleşen BLOK aralıklarını (başlangıç, bitiş) verir --
+    # bunları tek tek residü çiftlerine açıyoruz
     pairs = []
     for (p_start, p_end), (e_start, e_end) in zip(pred_aligned, exp_aligned):
         for p_offset, e_offset in zip(range(p_start, p_end), range(e_start, e_end)):
             pairs.append((pred_ids[p_offset], exp_ids[e_offset]))
-
+ 
     return pairs
 
 
@@ -119,9 +100,7 @@ def align_structures(
     predicted_chain: str = "A",
     experimental_chain: str = "A",
 ) -> dict:
-    """
-    Iki yapiyi hizalar, global RMSD ve rezidu bazli sapmayi hesaplar.
-    """
+    # İki yapıyı hizalar, global RMSD ve residü bazlı sapmayı hesaplar. Bu dosyanın ANA fonksiyonu.
     predicted_residues = get_ca_residues(predicted_pdb, predicted_chain)
     experimental_residues = get_ca_residues(experimental_pdb, experimental_chain)
 
@@ -196,7 +175,7 @@ def main():
     with open(output_path, "w") as f:
         json.dump(result, f, indent=2)
     print(f"\nSonuc kaydedildi: {output_path}")
-
+    # Bu dosya, scene.py'ye ikinci parametre olarak verilip renk katmanına dönüştürülüyor
 
 if __name__ == "__main__":
     main()
