@@ -1,4 +1,5 @@
 # AlphaFold Güven Skorlarının Blender ile 3B Görselleştirilmesi
+
 ## Amacım
 Bu projede amacım, AlphaFold'un çalışma mantığını öğrenmek, AlphaFold tarafından üretilen protein yapılarının pLDDT güven skorlarını inceleyerek  Blender 3D ile bu verileri bilimsel açıdan anlamlı 3B görsellere dönüştürmektir. Aynı zamanda bu projeyle yeni öğrenmeye başladığım Python dilini pratik etmek ve biyoinformatik odaklı ilk büyük projemi geliştirmeyi amaçladım.
 Proje geliştirme sürecinde Claude gibi yapay zekâ destekli araçlardan kod geliştirme, hata ayıklama ve iyileştirme önerileri almak için yararlandım. Tüm kodlar test edilerek projeye tarafımdan entegre edilmiştir.
@@ -30,7 +31,7 @@ Güven dağılımı:
 ## Kurulum
 
 ```bash
-git clone <https://github.com/HilalKorkusuz/AlphaFold-G-ven-Skorlar-n-n-Blender-ile-3B-G-rselle-tirilmesi.git>
+git clone https://github.com/HilalKorkusuz/alphafold-plddt-to-blender.git
 cd protein-confidence-renderer
 pip install -r requirements.txt
 ```
@@ -42,7 +43,7 @@ Sıfırdan başlayan biri için, terminale sırayla yazılması gerekenler:
  
 ```bash
 # 0. Repoyu indir, bağımlılıkları kur
-git clone <https://github.com/HilalKorkusuz/AlphaFold-G-ven-Skorlar-n-n-Blender-ile-3B-G-rselle-tirilmesi.git>
+git clone https://github.com/HilalKorkusuz/alphafold-plddt-to-blender.git
 cd protein-confidence-renderer/src
 pip install -r ../requirements.txt
  
