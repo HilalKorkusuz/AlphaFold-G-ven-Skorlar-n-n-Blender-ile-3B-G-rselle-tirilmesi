@@ -1,15 +1,14 @@
 # AlphaFold Güven Skorlarının Blender ile 3B Görselleştirilmesi
 ## Amacım
-Bu projede amacım, AlphaFold'un çalışma mantığını öğrenmek, AlphaFold tarafından üretilen protein yapılarının pLDDT güven skorlarını inceleyerek  Blender 3D ile bu verileri bilimsel açıdan anlamlı 3B görsellere dönüştürmektir. Aynı zamanda bu projeyle yeni öğrenmeye başladığım Python dilini pratik etmek ve biyoinformatik odaklı bir proje geliştirmeyi amaçladım.
+Bu projede amacım, AlphaFold'un çalışma mantığını öğrenmek, AlphaFold tarafından üretilen protein yapılarının pLDDT güven skorlarını inceleyerek  Blender 3D ile bu verileri bilimsel açıdan anlamlı 3B görsellere dönüştürmektir. Aynı zamanda bu projeyle yeni öğrenmeye başladığım Python dilini pratik etmek ve biyoinformatik odaklı ilk büyük projemi geliştirmeyi amaçladım.
 Proje geliştirme sürecinde Claude gibi yapay zekâ destekli araçlardan kod geliştirme, hata ayıklama ve iyileştirme önerileri almak için yararlandım. Tüm kodlar test edilerek projeye tarafımdan entegre edilmiştir.
 
 ## AlphaFold nedir?
-AlphaFold aminoasit dizisinden proteinin 3 boyutlu yapısını tahmin eden bir yapay zeka sistemidir. 
-Uniport (protein dizileri ve açıklamalarının standart deposu) ise AlphaFold'un tahminlerini içeren (200 milyonu aşan tahmin) veritabanıdır. 
-MSA (Çoklu Dizi Hizalaması), anlamına gelir; üç veya daha fazla protein, DNA veya RNA dizisinin aynı anda yan yana getirilip karşılaştırılması işlemidir. Bu yöntem temel olarak evrimsel ilişkileri bulma, ortak özellikleri ortaya çıkarma ve benzerlikleri inceleme amaçlarıyla kullanılır. AlphaFold gücünü MSA verilerinden alır. Yapısı bilinmeyen bir protein dizisi, yapısı laboratuvarda (X-ışını kristalografisi vb.) çözülmüş bilinen proteinlerle MSA ile hizalanır.Benzer diziye sahip bölgelerin, üç boyutlu uzayda da benzer şekilde katlanacağı varsayılarak bilinmeyen proteinin modeli çıkarılır. 
-Model işini bitirdiğinde, kendi yaptığı tahminin doğruluğunu ölçer (pLDDT skoru).
+AlphaFold aminoasit dizisinden proteinin 3 boyutlu yapısını tahmin eden bir yapay zeka sistemidir. MSA (Çoklu Dizi Hizalaması), anlamına gelir; üç veya daha fazla protein, DNA veya RNA dizisinin aynı anda yan yana getirilip karşılaştırılması işlemidir. Bu yöntem temel olarak evrimsel ilişkileri bulma, ortak özellikleri ortaya çıkarma ve benzerlikleri inceleme amaçlarıyla kullanılır. AlphaFold gücünü MSA verilerinden alır. Yapısı bilinmeyen bir protein dizisi, yapısı laboratuvarda (X-ışını kristalografisi vb.) çözülmüş bilinen proteinlerle MSA ile hizalanır.Benzer diziye sahip bölgelerin, üç boyutlu uzayda da benzer şekilde katlanacağı varsayılarak bilinmeyen proteinin modeli çıkarılır. 
 
-## PLDDT skoru güven dağılımı:
+## PLDDT skoru
+Model işini bitirdiğinde, kendi yaptığı tahminin doğruluğunu ölçer (pLDDT skoru).
+Güven dağılımı:
 🟦 Çok yüksek (>90): 206
 🟩 Güvenilir (70–90): 27
 🟨 Düşük (50–70): 43
@@ -103,13 +102,20 @@ Blender quit
 - Çıktı, `data/scene_<UNIPROT_ID>_render_<renk_modu>.png` olarak kaydedilir.
 
 ## Kullanılan Teknolojiler
-- **Python** — pipeline'ın omurgası
-- **Biopython** — PDB dosyalarını okuma, rezidü/atom düzeyinde veri çıkarma, `Superimposer` ile yapısal hizalama, `PairwiseAligner` ile dizi hizalama
-- **AlphaFold DB API** — yapı tahminlerine ve güven verisine erişim
-- **RCSB PDB API** — deneysel referans yapılarına erişim
-- **Blender (bpy)** — headless, script-tabanlı 3B sahne kurulumu ve render alma
-- **Claude** - kod yazma ve konuyu anlatma konusunda kullandım
 
+- Python 3
+- Biopython
+- AlphaFold DB
+- UniProt
+- RCSB Protein Data Bank
+- Blender 4.x
+## Geliştirme Araçları
+
+- Anaconda
+- Git
+- Claude
+- ChatGPT
+- 
 # Kaynakça
 - https://www.uniprot.org/
 - https://alphafold.ebi.ac.uk/
