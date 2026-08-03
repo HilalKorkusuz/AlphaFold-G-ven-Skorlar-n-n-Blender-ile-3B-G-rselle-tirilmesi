@@ -1,0 +1,2317 @@
+{
+  "uniprot_id": "P01308",
+  "pdb_path": "C:\\Users\\hilal\\protein-projesi\\AlphaFold G\u00fcven Skorlar\u0131n\u0131n Blender ile 3B G\u00f6rselle\u015ftirilmesi\\data\\P01308.pdb",
+  "global_rmsd": null,
+  "residues": [
+    {
+      "residue_number": 1,
+      "residue_name": "MET",
+      "plddt": 64.44,
+      "color": [
+        1.0,
+        0.851,
+        0.0
+      ],
+      "position": [
+        20.464000701904297,
+        11.152999877929688,
+        -34.013999938964844
+      ],
+      "deviation": null,
+      "deviation_color": [
+        0.4,
+        0.4,
+        0.4
+      ]
+    },
+    {
+      "residue_number": 2,
+      "residue_name": "ALA",
+      "plddt": 77.88,
+      "color": [
+        0.325,
+        0.85,
+        0.843
+      ],
+      "position": [
+        18.413000106811523,
+        8.15999984741211,
+        -35.439998626708984
+      ],
+      "deviation": null,
+      "deviation_color": [
+        0.4,
+        0.4,
+        0.4
+      ]
+    },
+    {
+      "residue_number": 3,
+      "residue_name": "LEU",
+      "plddt": 76.25,
+      "color": [
+        0.325,
+        0.85,
+        0.843
+      ],
+      "position": [
+        17.89900016784668,
+        5.9770002365112305,
+        -32.27899932861328
+      ],
+      "deviation": null,
+      "deviation_color": [
+        0.4,
+        0.4,
+        0.4
+      ]
+    },
+    {
+      "residue_number": 4,
+      "residue_name": "TRP",
+      "plddt": 83.88,
+      "color": [
+        0.325,
+        0.85,
+        0.843
+      ],
+      "position": [
+        15.581000328063965,
+        8.447999954223633,
+        -30.45199966430664
+      ],
+      "deviation": null,
+      "deviation_color": [
+        0.4,
+        0.4,
+        0.4
+      ]
+    },
+    {
+      "residue_number": 5,
+      "residue_name": "MET",
+      "plddt": 82.19,
+      "color": [
+        0.325,
+        0.85,
+        0.843
+      ],
+      "position": [
+        13.291000366210938,
+        8.65999984741211,
+        -33.54899978637695
+      ],
+      "deviation": null,
+      "deviation_color": [
+        0.4,
+        0.4,
+        0.4
+      ]
+    },
+    {
+      "residue_number": 6,
+      "residue_name": "ARG",
+      "plddt": 83.19,
+      "color": [
+        0.325,
+        0.85,
+        0.843
+      ],
+      "position": [
+        12.821999549865723,
+        4.8420000076293945,
+        -33.24599838256836
+      ],
+      "deviation": null,
+      "deviation_color": [
+        0.4,
+        0.4,
+        0.4
+      ]
+    },
+    {
+      "residue_number": 7,
+      "residue_name": "LEU",
+      "plddt": 84.75,
+      "color": [
+        0.325,
+        0.85,
+        0.843
+      ],
+      "position": [
+        12.444000244140625,
+        4.919000148773193,
+        -29.433000564575195
+      ],
+      "deviation": null,
+      "deviation_color": [
+        0.4,
+        0.4,
+        0.4
+      ]
+    },
+    {
+      "residue_number": 8,
+      "residue_name": "LEU",
+      "plddt": 84.0,
+      "color": [
+        0.325,
+        0.85,
+        0.843
+      ],
+      "position": [
+        9.54800033569336,
+        7.4710001945495605,
+        -29.56100082397461
+      ],
+      "deviation": null,
+      "deviation_color": [
+        0.4,
+        0.4,
+        0.4
+      ]
+    },
+    {
+      "residue_number": 9,
+      "residue_name": "PRO",
+      "plddt": 85.56,
+      "color": [
+        0.325,
+        0.85,
+        0.843
+      ],
+      "position": [
+        7.13700008392334,
+        5.386000156402588,
+        -31.77199935913086
+      ],
+      "deviation": null,
+      "deviation_color": [
+        0.4,
+        0.4,
+        0.4
+      ]
+    },
+    {
+      "residue_number": 10,
+      "residue_name": "LEU",
+      "plddt": 85.44,
+      "color": [
+        0.325,
+        0.85,
+        0.843
+      ],
+      "position": [
+        8.204000473022461,
+        2.2179999351501465,
+        -29.851999282836914
+      ],
+      "deviation": null,
+      "deviation_color": [
+        0.4,
+        0.4,
+        0.4
+      ]
+    },
+    {
+      "residue_number": 11,
+      "residue_name": "LEU",
+      "plddt": 82.06,
+      "color": [
+        0.325,
+        0.85,
+        0.843
+      ],
+      "position": [
+        7.341000080108643,
+        3.943000078201294,
+        -26.52199935913086
+      ],
+      "deviation": null,
+      "deviation_color": [
+        0.4,
+        0.4,
+        0.4
+      ]
+    },
+    {
+      "residue_number": 12,
+      "residue_name": "ALA",
+      "plddt": 82.25,
+      "color": [
+        0.325,
+        0.85,
+        0.843
+      ],
+      "position": [
+        4.072000026702881,
+        5.241000175476074,
+        -28.075000762939453
+      ],
+      "deviation": null,
+      "deviation_color": [
+        0.4,
+        0.4,
+        0.4
+      ]
+    },
+    {
+      "residue_number": 13,
+      "residue_name": "LEU",
+      "plddt": 82.38,
+      "color": [
+        0.325,
+        0.85,
+        0.843
+      ],
+      "position": [
+        3.3310000896453857,
+        1.6859999895095825,
+        -29.30299949645996
+      ],
+      "deviation": null,
+      "deviation_color": [
+        0.4,
+        0.4,
+        0.4
+      ]
+    },
+    {
+      "residue_number": 14,
+      "residue_name": "LEU",
+      "plddt": 78.06,
+      "color": [
+        0.325,
+        0.85,
+        0.843
+      ],
+      "position": [
+        4.216000080108643,
+        0.3799999952316284,
+        -25.770999908447266
+      ],
+      "deviation": null,
+      "deviation_color": [
+        0.4,
+        0.4,
+        0.4
+      ]
+    },
+    {
+      "residue_number": 15,
+      "residue_name": "ALA",
+      "plddt": 74.19,
+      "color": [
+        0.325,
+        0.85,
+        0.843
+      ],
+      "position": [
+        1.9279999732971191,
+        3.052999973297119,
+        -24.201000213623047
+      ],
+      "deviation": null,
+      "deviation_color": [
+        0.4,
+        0.4,
+        0.4
+      ]
+    },
+    {
+      "residue_number": 16,
+      "residue_name": "LEU",
+      "plddt": 68.94,
+      "color": [
+        1.0,
+        0.851,
+        0.0
+      ],
+      "position": [
+        -0.9179999828338623,
+        2.2890000343322754,
+        -26.676000595092773
+      ],
+      "deviation": null,
+      "deviation_color": [
+        0.4,
+        0.4,
+        0.4
+      ]
+    },
+    {
+      "residue_number": 17,
+      "residue_name": "TRP",
+      "plddt": 66.44,
+      "color": [
+        1.0,
+        0.851,
+        0.0
+      ],
+      "position": [
+        -0.4169999957084656,
+        -1.5260000228881836,
+        -26.378999710083008
+      ],
+      "deviation": null,
+      "deviation_color": [
+        0.4,
+        0.4,
+        0.4
+      ]
+    },
+    {
+      "residue_number": 18,
+      "residue_name": "GLY",
+      "plddt": 63.94,
+      "color": [
+        1.0,
+        0.851,
+        0.0
+      ],
+      "position": [
+        0.3089999854564667,
+        -1.2710000276565552,
+        -22.652000427246094
+      ],
+      "deviation": null,
+      "deviation_color": [
+        0.4,
+        0.4,
+        0.4
+      ]
+    },
+    {
+      "residue_number": 19,
+      "residue_name": "PRO",
+      "plddt": 53.19,
+      "color": [
+        1.0,
+        0.851,
+        0.0
+      ],
+      "position": [
+        -2.691999912261963,
+        -1.555999994277954,
+        -20.31399917602539
+      ],
+      "deviation": null,
+      "deviation_color": [
+        0.4,
+        0.4,
+        0.4
+      ]
+    },
+    {
+      "residue_number": 20,
+      "residue_name": "ASP",
+      "plddt": 49.03,
+      "color": [
+        1.0,
+        0.494,
+        0.0
+      ],
+      "position": [
+        -4.193999767303467,
+        1.9620000123977661,
+        -20.27400016784668
+      ],
+      "deviation": null,
+      "deviation_color": [
+        0.4,
+        0.4,
+        0.4
+      ]
+    },
+    {
+      "residue_number": 21,
+      "residue_name": "PRO",
+      "plddt": 50.72,
+      "color": [
+        1.0,
+        0.851,
+        0.0
+      ],
+      "position": [
+        -2.763000011444092,
+        3.438999891281128,
+        -17.045000076293945
+      ],
+      "deviation": null,
+      "deviation_color": [
+        0.4,
+        0.4,
+        0.4
+      ]
+    },
+    {
+      "residue_number": 22,
+      "residue_name": "ALA",
+      "plddt": 45.88,
+      "color": [
+        1.0,
+        0.494,
+        0.0
+      ],
+      "position": [
+        -6.118000030517578,
+        3.74399995803833,
+        -15.222000122070312
+      ],
+      "deviation": null,
+      "deviation_color": [
+        0.4,
+        0.4,
+        0.4
+      ]
+    },
+    {
+      "residue_number": 23,
+      "residue_name": "ALA",
+      "plddt": 48.22,
+      "color": [
+        1.0,
+        0.494,
+        0.0
+      ],
+      "position": [
+        -5.306000232696533,
+        7.436999797821045,
+        -14.430000305175781
+      ],
+      "deviation": null,
+      "deviation_color": [
+        0.4,
+        0.4,
+        0.4
+      ]
+    },
+    {
+      "residue_number": 24,
+      "residue_name": "ALA",
+      "plddt": 40.69,
+      "color": [
+        1.0,
+        0.494,
+        0.0
+      ],
+      "position": [
+        -8.968999862670898,
+        7.806000232696533,
+        -15.343999862670898
+      ],
+      "deviation": null,
+      "deviation_color": [
+        0.4,
+        0.4,
+        0.4
+      ]
+    },
+    {
+      "residue_number": 25,
+      "residue_name": "PHE",
+      "plddt": 41.34,
+      "color": [
+        1.0,
+        0.494,
+        0.0
+      ],
+      "position": [
+        -10.692000389099121,
+        7.3979997634887695,
+        -12.055000305175781
+      ],
+      "deviation": null,
+      "deviation_color": [
+        0.4,
+        0.4,
+        0.4
+      ]
+    },
+    {
+      "residue_number": 26,
+      "residue_name": "VAL",
+      "plddt": 46.03,
+      "color": [
+        1.0,
+        0.494,
+        0.0
+      ],
+      "position": [
+        -11.593999862670898,
+        9.543999671936035,
+        -9.152000427246094
+      ],
+      "deviation": null,
+      "deviation_color": [
+        0.4,
+        0.4,
+        0.4
+      ]
+    },
+    {
+      "residue_number": 27,
+      "residue_name": "ASN",
+      "plddt": 39.75,
+      "color": [
+        1.0,
+        0.494,
+        0.0
+      ],
+      "position": [
+        -10.506999969482422,
+        11.789999961853027,
+        -7.0279998779296875
+      ],
+      "deviation": null,
+      "deviation_color": [
+        0.4,
+        0.4,
+        0.4
+      ]
+    },
+    {
+      "residue_number": 28,
+      "residue_name": "GLN",
+      "plddt": 46.88,
+      "color": [
+        1.0,
+        0.494,
+        0.0
+      ],
+      "position": [
+        -13.092000007629395,
+        11.23900032043457,
+        -4.188000202178955
+      ],
+      "deviation": null,
+      "deviation_color": [
+        0.4,
+        0.4,
+        0.4
+      ]
+    },
+    {
+      "residue_number": 29,
+      "residue_name": "HIS",
+      "plddt": 45.88,
+      "color": [
+        1.0,
+        0.494,
+        0.0
+      ],
+      "position": [
+        -13.440999984741211,
+        9.593999862670898,
+        -0.6919999718666077
+      ],
+      "deviation": null,
+      "deviation_color": [
+        0.4,
+        0.4,
+        0.4
+      ]
+    },
+    {
+      "residue_number": 30,
+      "residue_name": "LEU",
+      "plddt": 48.81,
+      "color": [
+        1.0,
+        0.494,
+        0.0
+      ],
+      "position": [
+        -13.90999984741211,
+        5.76200008392334,
+        -0.6980000138282776
+      ],
+      "deviation": null,
+      "deviation_color": [
+        0.4,
+        0.4,
+        0.4
+      ]
+    },
+    {
+      "residue_number": 31,
+      "residue_name": "CYS",
+      "plddt": 49.47,
+      "color": [
+        1.0,
+        0.494,
+        0.0
+      ],
+      "position": [
+        -13.668000221252441,
+        3.8929998874664307,
+        2.625999927520752
+      ],
+      "deviation": null,
+      "deviation_color": [
+        0.4,
+        0.4,
+        0.4
+      ]
+    },
+    {
+      "residue_number": 32,
+      "residue_name": "GLY",
+      "plddt": 51.88,
+      "color": [
+        1.0,
+        0.851,
+        0.0
+      ],
+      "position": [
+        -11.486000061035156,
+        0.8379999995231628,
+        2.305999994277954
+      ],
+      "deviation": null,
+      "deviation_color": [
+        0.4,
+        0.4,
+        0.4
+      ]
+    },
+    {
+      "residue_number": 33,
+      "residue_name": "SER",
+      "plddt": 49.78,
+      "color": [
+        1.0,
+        0.494,
+        0.0
+      ],
+      "position": [
+        -11.883999824523926,
+        -1.7120000123977661,
+        -0.5929999947547913
+      ],
+      "deviation": null,
+      "deviation_color": [
+        0.4,
+        0.4,
+        0.4
+      ]
+    },
+    {
+      "residue_number": 34,
+      "residue_name": "HIS",
+      "plddt": 50.19,
+      "color": [
+        1.0,
+        0.851,
+        0.0
+      ],
+      "position": [
+        -9.88700008392334,
+        -0.6290000081062317,
+        -3.7360000610351562
+      ],
+      "deviation": null,
+      "deviation_color": [
+        0.4,
+        0.4,
+        0.4
+      ]
+    },
+    {
+      "residue_number": 35,
+      "residue_name": "LEU",
+      "plddt": 52.31,
+      "color": [
+        1.0,
+        0.851,
+        0.0
+      ],
+      "position": [
+        -6.394999980926514,
+        -0.2800000011920929,
+        -2.1029999256134033
+      ],
+      "deviation": null,
+      "deviation_color": [
+        0.4,
+        0.4,
+        0.4
+      ]
+    },
+    {
+      "residue_number": 36,
+      "residue_name": "VAL",
+      "plddt": 52.56,
+      "color": [
+        1.0,
+        0.851,
+        0.0
+      ],
+      "position": [
+        -5.85099983215332,
+        -4.125999927520752,
+        -2.0989999771118164
+      ],
+      "deviation": null,
+      "deviation_color": [
+        0.4,
+        0.4,
+        0.4
+      ]
+    },
+    {
+      "residue_number": 37,
+      "residue_name": "GLU",
+      "plddt": 52.28,
+      "color": [
+        1.0,
+        0.851,
+        0.0
+      ],
+      "position": [
+        -5.328999996185303,
+        -4.428999900817871,
+        -5.923999786376953
+      ],
+      "deviation": null,
+      "deviation_color": [
+        0.4,
+        0.4,
+        0.4
+      ]
+    },
+    {
+      "residue_number": 38,
+      "residue_name": "ALA",
+      "plddt": 52.34,
+      "color": [
+        1.0,
+        0.851,
+        0.0
+      ],
+      "position": [
+        -2.6549999713897705,
+        -1.6610000133514404,
+        -6.119999885559082
+      ],
+      "deviation": null,
+      "deviation_color": [
+        0.4,
+        0.4,
+        0.4
+      ]
+    },
+    {
+      "residue_number": 39,
+      "residue_name": "LEU",
+      "plddt": 51.78,
+      "color": [
+        1.0,
+        0.851,
+        0.0
+      ],
+      "position": [
+        -0.7369999885559082,
+        -3.256999969482422,
+        -3.1579999923706055
+      ],
+      "deviation": null,
+      "deviation_color": [
+        0.4,
+        0.4,
+        0.4
+      ]
+    },
+    {
+      "residue_number": 40,
+      "residue_name": "TYR",
+      "plddt": 47.75,
+      "color": [
+        1.0,
+        0.494,
+        0.0
+      ],
+      "position": [
+        -0.8889999985694885,
+        -6.683000087738037,
+        -4.965000152587891
+      ],
+      "deviation": null,
+      "deviation_color": [
+        0.4,
+        0.4,
+        0.4
+      ]
+    },
+    {
+      "residue_number": 41,
+      "residue_name": "LEU",
+      "plddt": 52.53,
+      "color": [
+        1.0,
+        0.851,
+        0.0
+      ],
+      "position": [
+        1.1660000085830688,
+        -5.320000171661377,
+        -7.943999767303467
+      ],
+      "deviation": null,
+      "deviation_color": [
+        0.4,
+        0.4,
+        0.4
+      ]
+    },
+    {
+      "residue_number": 42,
+      "residue_name": "VAL",
+      "plddt": 53.56,
+      "color": [
+        1.0,
+        0.851,
+        0.0
+      ],
+      "position": [
+        3.9100000858306885,
+        -3.493000030517578,
+        -5.896999835968018
+      ],
+      "deviation": null,
+      "deviation_color": [
+        0.4,
+        0.4,
+        0.4
+      ]
+    },
+    {
+      "residue_number": 43,
+      "residue_name": "CYS",
+      "plddt": 56.16,
+      "color": [
+        1.0,
+        0.851,
+        0.0
+      ],
+      "position": [
+        5.171999931335449,
+        -6.663000106811523,
+        -4.061999797821045
+      ],
+      "deviation": null,
+      "deviation_color": [
+        0.4,
+        0.4,
+        0.4
+      ]
+    },
+    {
+      "residue_number": 44,
+      "residue_name": "GLY",
+      "plddt": 53.34,
+      "color": [
+        1.0,
+        0.851,
+        0.0
+      ],
+      "position": [
+        5.53000020980835,
+        -8.088000297546387,
+        -7.63700008392334
+      ],
+      "deviation": null,
+      "deviation_color": [
+        0.4,
+        0.4,
+        0.4
+      ]
+    },
+    {
+      "residue_number": 45,
+      "residue_name": "GLU",
+      "plddt": 53.88,
+      "color": [
+        1.0,
+        0.851,
+        0.0
+      ],
+      "position": [
+        9.293000221252441,
+        -9.039999961853027,
+        -7.63100004196167
+      ],
+      "deviation": null,
+      "deviation_color": [
+        0.4,
+        0.4,
+        0.4
+      ]
+    },
+    {
+      "residue_number": 46,
+      "residue_name": "ARG",
+      "plddt": 49.94,
+      "color": [
+        1.0,
+        0.494,
+        0.0
+      ],
+      "position": [
+        9.930000305175781,
+        -10.788000106811523,
+        -4.2270002365112305
+      ],
+      "deviation": null,
+      "deviation_color": [
+        0.4,
+        0.4,
+        0.4
+      ]
+    },
+    {
+      "residue_number": 47,
+      "residue_name": "GLY",
+      "plddt": 45.03,
+      "color": [
+        1.0,
+        0.494,
+        0.0
+      ],
+      "position": [
+        7.385000228881836,
+        -13.562999725341797,
+        -3.6559998989105225
+      ],
+      "deviation": null,
+      "deviation_color": [
+        0.4,
+        0.4,
+        0.4
+      ]
+    },
+    {
+      "residue_number": 48,
+      "residue_name": "PHE",
+      "plddt": 44.81,
+      "color": [
+        1.0,
+        0.494,
+        0.0
+      ],
+      "position": [
+        5.730000019073486,
+        -13.706000328063965,
+        -0.23000000417232513
+      ],
+      "deviation": null,
+      "deviation_color": [
+        0.4,
+        0.4,
+        0.4
+      ]
+    },
+    {
+      "residue_number": 49,
+      "residue_name": "PHE",
+      "plddt": 41.19,
+      "color": [
+        1.0,
+        0.494,
+        0.0
+      ],
+      "position": [
+        3.9609999656677246,
+        -17.062000274658203,
+        0.2849999964237213
+      ],
+      "deviation": null,
+      "deviation_color": [
+        0.4,
+        0.4,
+        0.4
+      ]
+    },
+    {
+      "residue_number": 50,
+      "residue_name": "TYR",
+      "plddt": 42.19,
+      "color": [
+        1.0,
+        0.494,
+        0.0
+      ],
+      "position": [
+        0.7289999723434448,
+        -15.963000297546387,
+        2.0179998874664307
+      ],
+      "deviation": null,
+      "deviation_color": [
+        0.4,
+        0.4,
+        0.4
+      ]
+    },
+    {
+      "residue_number": 51,
+      "residue_name": "THR",
+      "plddt": 47.44,
+      "color": [
+        1.0,
+        0.494,
+        0.0
+      ],
+      "position": [
+        -0.4390000104904175,
+        -19.47599983215332,
+        2.9839999675750732
+      ],
+      "deviation": null,
+      "deviation_color": [
+        0.4,
+        0.4,
+        0.4
+      ]
+    },
+    {
+      "residue_number": 52,
+      "residue_name": "PRO",
+      "plddt": 47.25,
+      "color": [
+        1.0,
+        0.494,
+        0.0
+      ],
+      "position": [
+        -3.6389999389648438,
+        -18.958999633789062,
+        5.078000068664551
+      ],
+      "deviation": null,
+      "deviation_color": [
+        0.4,
+        0.4,
+        0.4
+      ]
+    },
+    {
+      "residue_number": 53,
+      "residue_name": "LYS",
+      "plddt": 41.88,
+      "color": [
+        1.0,
+        0.494,
+        0.0
+      ],
+      "position": [
+        -2.9609999656677246,
+        -21.750999450683594,
+        7.6020002365112305
+      ],
+      "deviation": null,
+      "deviation_color": [
+        0.4,
+        0.4,
+        0.4
+      ]
+    },
+    {
+      "residue_number": 54,
+      "residue_name": "THR",
+      "plddt": 39.38,
+      "color": [
+        1.0,
+        0.494,
+        0.0
+      ],
+      "position": [
+        -5.802999973297119,
+        -22.209999084472656,
+        9.890999794006348
+      ],
+      "deviation": null,
+      "deviation_color": [
+        0.4,
+        0.4,
+        0.4
+      ]
+    },
+    {
+      "residue_number": 55,
+      "residue_name": "ARG",
+      "plddt": 44.19,
+      "color": [
+        1.0,
+        0.494,
+        0.0
+      ],
+      "position": [
+        -5.369999885559082,
+        -21.43899917602539,
+        13.60200023651123
+      ],
+      "deviation": null,
+      "deviation_color": [
+        0.4,
+        0.4,
+        0.4
+      ]
+    },
+    {
+      "residue_number": 56,
+      "residue_name": "ARG",
+      "plddt": 47.41,
+      "color": [
+        1.0,
+        0.494,
+        0.0
+      ],
+      "position": [
+        -7.688000202178955,
+        -20.31399917602539,
+        16.461000442504883
+      ],
+      "deviation": null,
+      "deviation_color": [
+        0.4,
+        0.4,
+        0.4
+      ]
+    },
+    {
+      "residue_number": 57,
+      "residue_name": "GLU",
+      "plddt": 40.56,
+      "color": [
+        1.0,
+        0.494,
+        0.0
+      ],
+      "position": [
+        -10.748000144958496,
+        -21.215999603271484,
+        17.152999877929688
+      ],
+      "deviation": null,
+      "deviation_color": [
+        0.4,
+        0.4,
+        0.4
+      ]
+    },
+    {
+      "residue_number": 58,
+      "residue_name": "ALA",
+      "plddt": 47.5,
+      "color": [
+        1.0,
+        0.494,
+        0.0
+      ],
+      "position": [
+        -12.630000114440918,
+        -19.016000747680664,
+        19.60700035095215
+      ],
+      "deviation": null,
+      "deviation_color": [
+        0.4,
+        0.4,
+        0.4
+      ]
+    },
+    {
+      "residue_number": 59,
+      "residue_name": "GLU",
+      "plddt": 41.78,
+      "color": [
+        1.0,
+        0.494,
+        0.0
+      ],
+      "position": [
+        -16.2189998626709,
+        -19.091999053955078,
+        18.55500030517578
+      ],
+      "deviation": null,
+      "deviation_color": [
+        0.4,
+        0.4,
+        0.4
+      ]
+    },
+    {
+      "residue_number": 60,
+      "residue_name": "ASP",
+      "plddt": 43.12,
+      "color": [
+        1.0,
+        0.494,
+        0.0
+      ],
+      "position": [
+        -18.139999389648438,
+        -20.79599952697754,
+        21.43400001525879
+      ],
+      "deviation": null,
+      "deviation_color": [
+        0.4,
+        0.4,
+        0.4
+      ]
+    },
+    {
+      "residue_number": 61,
+      "residue_name": "LEU",
+      "plddt": 48.38,
+      "color": [
+        1.0,
+        0.494,
+        0.0
+      ],
+      "position": [
+        -18.982999801635742,
+        -20.18199920654297,
+        24.802000045776367
+      ],
+      "deviation": null,
+      "deviation_color": [
+        0.4,
+        0.4,
+        0.4
+      ]
+    },
+    {
+      "residue_number": 62,
+      "residue_name": "GLN",
+      "plddt": 45.94,
+      "color": [
+        1.0,
+        0.494,
+        0.0
+      ],
+      "position": [
+        -21.429000854492188,
+        -18.658000946044922,
+        27.259000778198242
+      ],
+      "deviation": null,
+      "deviation_color": [
+        0.4,
+        0.4,
+        0.4
+      ]
+    },
+    {
+      "residue_number": 63,
+      "residue_name": "VAL",
+      "plddt": 42.59,
+      "color": [
+        1.0,
+        0.494,
+        0.0
+      ],
+      "position": [
+        -24.506000518798828,
+        -17.427000045776367,
+        27.589000701904297
+      ],
+      "deviation": null,
+      "deviation_color": [
+        0.4,
+        0.4,
+        0.4
+      ]
+    },
+    {
+      "residue_number": 64,
+      "residue_name": "GLY",
+      "plddt": 42.53,
+      "color": [
+        1.0,
+        0.494,
+        0.0
+      ],
+      "position": [
+        -26.64299964904785,
+        -15.755999565124512,
+        30.25200080871582
+      ],
+      "deviation": null,
+      "deviation_color": [
+        0.4,
+        0.4,
+        0.4
+      ]
+    },
+    {
+      "residue_number": 65,
+      "residue_name": "GLN",
+      "plddt": 46.12,
+      "color": [
+        1.0,
+        0.494,
+        0.0
+      ],
+      "position": [
+        -28.05699920654297,
+        -13.552000045776367,
+        31.92099952697754
+      ],
+      "deviation": null,
+      "deviation_color": [
+        0.4,
+        0.4,
+        0.4
+      ]
+    },
+    {
+      "residue_number": 66,
+      "residue_name": "VAL",
+      "plddt": 45.47,
+      "color": [
+        1.0,
+        0.494,
+        0.0
+      ],
+      "position": [
+        -30.40399932861328,
+        -10.567000389099121,
+        32.268001556396484
+      ],
+      "deviation": null,
+      "deviation_color": [
+        0.4,
+        0.4,
+        0.4
+      ]
+    },
+    {
+      "residue_number": 67,
+      "residue_name": "GLU",
+      "plddt": 41.56,
+      "color": [
+        1.0,
+        0.494,
+        0.0
+      ],
+      "position": [
+        -31.163000106811523,
+        -7.711999893188477,
+        34.46099853515625
+      ],
+      "deviation": null,
+      "deviation_color": [
+        0.4,
+        0.4,
+        0.4
+      ]
+    },
+    {
+      "residue_number": 68,
+      "residue_name": "LEU",
+      "plddt": 52.94,
+      "color": [
+        1.0,
+        0.851,
+        0.0
+      ],
+      "position": [
+        -32.57899856567383,
+        -7.531000137329102,
+        38.00199890136719
+      ],
+      "deviation": null,
+      "deviation_color": [
+        0.4,
+        0.4,
+        0.4
+      ]
+    },
+    {
+      "residue_number": 69,
+      "residue_name": "GLY",
+      "plddt": 43.75,
+      "color": [
+        1.0,
+        0.494,
+        0.0
+      ],
+      "position": [
+        -33.428001403808594,
+        -4.1020002365112305,
+        39.4630012512207
+      ],
+      "deviation": null,
+      "deviation_color": [
+        0.4,
+        0.4,
+        0.4
+      ]
+    },
+    {
+      "residue_number": 70,
+      "residue_name": "GLY",
+      "plddt": 49.06,
+      "color": [
+        1.0,
+        0.494,
+        0.0
+      ],
+      "position": [
+        -34.36800003051758,
+        -3.196000099182129,
+        43.03300094604492
+      ],
+      "deviation": null,
+      "deviation_color": [
+        0.4,
+        0.4,
+        0.4
+      ]
+    },
+    {
+      "residue_number": 71,
+      "residue_name": "GLY",
+      "plddt": 48.09,
+      "color": [
+        1.0,
+        0.494,
+        0.0
+      ],
+      "position": [
+        -33.61399841308594,
+        -1.1230000257492065,
+        46.02299880981445
+      ],
+      "deviation": null,
+      "deviation_color": [
+        0.4,
+        0.4,
+        0.4
+      ]
+    },
+    {
+      "residue_number": 72,
+      "residue_name": "PRO",
+      "plddt": 42.88,
+      "color": [
+        1.0,
+        0.494,
+        0.0
+      ],
+      "position": [
+        -31.37299919128418,
+        -1.1970000267028809,
+        49.178001403808594
+      ],
+      "deviation": null,
+      "deviation_color": [
+        0.4,
+        0.4,
+        0.4
+      ]
+    },
+    {
+      "residue_number": 73,
+      "residue_name": "GLY",
+      "plddt": 44.72,
+      "color": [
+        1.0,
+        0.494,
+        0.0
+      ],
+      "position": [
+        -31.672000885009766,
+        -3.614000082015991,
+        52.1349983215332
+      ],
+      "deviation": null,
+      "deviation_color": [
+        0.4,
+        0.4,
+        0.4
+      ]
+    },
+    {
+      "residue_number": 74,
+      "residue_name": "ALA",
+      "plddt": 43.22,
+      "color": [
+        1.0,
+        0.494,
+        0.0
+      ],
+      "position": [
+        -28.996000289916992,
+        -5.8979997634887695,
+        53.71500015258789
+      ],
+      "deviation": null,
+      "deviation_color": [
+        0.4,
+        0.4,
+        0.4
+      ]
+    },
+    {
+      "residue_number": 75,
+      "residue_name": "GLY",
+      "plddt": 38.22,
+      "color": [
+        1.0,
+        0.494,
+        0.0
+      ],
+      "position": [
+        -25.45800018310547,
+        -6.557000160217285,
+        52.494998931884766
+      ],
+      "deviation": null,
+      "deviation_color": [
+        0.4,
+        0.4,
+        0.4
+      ]
+    },
+    {
+      "residue_number": 76,
+      "residue_name": "SER",
+      "plddt": 45.41,
+      "color": [
+        1.0,
+        0.494,
+        0.0
+      ],
+      "position": [
+        -22.89299964904785,
+        -5.35699987411499,
+        50.03799819946289
+      ],
+      "deviation": null,
+      "deviation_color": [
+        0.4,
+        0.4,
+        0.4
+      ]
+    },
+    {
+      "residue_number": 77,
+      "residue_name": "LEU",
+      "plddt": 48.06,
+      "color": [
+        1.0,
+        0.494,
+        0.0
+      ],
+      "position": [
+        -19.461999893188477,
+        -4.021999835968018,
+        50.92499923706055
+      ],
+      "deviation": null,
+      "deviation_color": [
+        0.4,
+        0.4,
+        0.4
+      ]
+    },
+    {
+      "residue_number": 78,
+      "residue_name": "GLN",
+      "plddt": 44.47,
+      "color": [
+        1.0,
+        0.494,
+        0.0
+      ],
+      "position": [
+        -17.6299991607666,
+        -2.190999984741211,
+        48.1510009765625
+      ],
+      "deviation": null,
+      "deviation_color": [
+        0.4,
+        0.4,
+        0.4
+      ]
+    },
+    {
+      "residue_number": 79,
+      "residue_name": "PRO",
+      "plddt": 37.66,
+      "color": [
+        1.0,
+        0.494,
+        0.0
+      ],
+      "position": [
+        -16.569000244140625,
+        -1.3609999418258667,
+        45.20500183105469
+      ],
+      "deviation": null,
+      "deviation_color": [
+        0.4,
+        0.4,
+        0.4
+      ]
+    },
+    {
+      "residue_number": 80,
+      "residue_name": "LEU",
+      "plddt": 41.38,
+      "color": [
+        1.0,
+        0.494,
+        0.0
+      ],
+      "position": [
+        -16.516000747680664,
+        -1.194000005722046,
+        41.2760009765625
+      ],
+      "deviation": null,
+      "deviation_color": [
+        0.4,
+        0.4,
+        0.4
+      ]
+    },
+    {
+      "residue_number": 81,
+      "residue_name": "ALA",
+      "plddt": 43.94,
+      "color": [
+        1.0,
+        0.494,
+        0.0
+      ],
+      "position": [
+        -19.5310001373291,
+        -1.0219999551773071,
+        38.92100143432617
+      ],
+      "deviation": null,
+      "deviation_color": [
+        0.4,
+        0.4,
+        0.4
+      ]
+    },
+    {
+      "residue_number": 82,
+      "residue_name": "LEU",
+      "plddt": 46.59,
+      "color": [
+        1.0,
+        0.494,
+        0.0
+      ],
+      "position": [
+        -18.617000579833984,
+        1.968000054359436,
+        36.70500183105469
+      ],
+      "deviation": null,
+      "deviation_color": [
+        0.4,
+        0.4,
+        0.4
+      ]
+    },
+    {
+      "residue_number": 83,
+      "residue_name": "GLU",
+      "plddt": 51.69,
+      "color": [
+        1.0,
+        0.851,
+        0.0
+      ],
+      "position": [
+        -18.649999618530273,
+        -1.0169999599456787,
+        34.262001037597656
+      ],
+      "deviation": null,
+      "deviation_color": [
+        0.4,
+        0.4,
+        0.4
+      ]
+    },
+    {
+      "residue_number": 84,
+      "residue_name": "GLY",
+      "plddt": 47.41,
+      "color": [
+        1.0,
+        0.494,
+        0.0
+      ],
+      "position": [
+        -21.93199920654297,
+        -0.4189999997615814,
+        32.323001861572266
+      ],
+      "deviation": null,
+      "deviation_color": [
+        0.4,
+        0.4,
+        0.4
+      ]
+    },
+    {
+      "residue_number": 85,
+      "residue_name": "SER",
+      "plddt": 47.81,
+      "color": [
+        1.0,
+        0.494,
+        0.0
+      ],
+      "position": [
+        -21.672000885009766,
+        2.4519999027252197,
+        29.75200080871582
+      ],
+      "deviation": null,
+      "deviation_color": [
+        0.4,
+        0.4,
+        0.4
+      ]
+    },
+    {
+      "residue_number": 86,
+      "residue_name": "LEU",
+      "plddt": 51.66,
+      "color": [
+        1.0,
+        0.851,
+        0.0
+      ],
+      "position": [
+        -18.20400047302246,
+        2.4619998931884766,
+        27.99799919128418
+      ],
+      "deviation": null,
+      "deviation_color": [
+        0.4,
+        0.4,
+        0.4
+      ]
+    },
+    {
+      "residue_number": 87,
+      "residue_name": "GLN",
+      "plddt": 53.59,
+      "color": [
+        1.0,
+        0.851,
+        0.0
+      ],
+      "position": [
+        -17.72599983215332,
+        -1.2269999980926514,
+        26.89900016784668
+      ],
+      "deviation": null,
+      "deviation_color": [
+        0.4,
+        0.4,
+        0.4
+      ]
+    },
+    {
+      "residue_number": 88,
+      "residue_name": "LYS",
+      "plddt": 51.19,
+      "color": [
+        1.0,
+        0.851,
+        0.0
+      ],
+      "position": [
+        -19.94300079345703,
+        -0.9340000152587891,
+        23.704999923706055
+      ],
+      "deviation": null,
+      "deviation_color": [
+        0.4,
+        0.4,
+        0.4
+      ]
+    },
+    {
+      "residue_number": 89,
+      "residue_name": "ARG",
+      "plddt": 51.0,
+      "color": [
+        1.0,
+        0.851,
+        0.0
+      ],
+      "position": [
+        -18.424999237060547,
+        2.046999931335449,
+        21.78700065612793
+      ],
+      "deviation": null,
+      "deviation_color": [
+        0.4,
+        0.4,
+        0.4
+      ]
+    },
+    {
+      "residue_number": 90,
+      "residue_name": "GLY",
+      "plddt": 48.0,
+      "color": [
+        1.0,
+        0.494,
+        0.0
+      ],
+      "position": [
+        -16.417999267578125,
+        0.4429999887943268,
+        19.000999450683594
+      ],
+      "deviation": null,
+      "deviation_color": [
+        0.4,
+        0.4,
+        0.4
+      ]
+    },
+    {
+      "residue_number": 91,
+      "residue_name": "ILE",
+      "plddt": 51.41,
+      "color": [
+        1.0,
+        0.851,
+        0.0
+      ],
+      "position": [
+        -12.621000289916992,
+        0.46399998664855957,
+        19.079999923706055
+      ],
+      "deviation": null,
+      "deviation_color": [
+        0.4,
+        0.4,
+        0.4
+      ]
+    },
+    {
+      "residue_number": 92,
+      "residue_name": "VAL",
+      "plddt": 50.16,
+      "color": [
+        1.0,
+        0.851,
+        0.0
+      ],
+      "position": [
+        -13.295000076293945,
+        -0.3970000147819519,
+        15.347000122070312
+      ],
+      "deviation": null,
+      "deviation_color": [
+        0.4,
+        0.4,
+        0.4
+      ]
+    },
+    {
+      "residue_number": 93,
+      "residue_name": "GLU",
+      "plddt": 52.03,
+      "color": [
+        1.0,
+        0.851,
+        0.0
+      ],
+      "position": [
+        -14.788000106811523,
+        2.9509999752044678,
+        14.04800033569336
+      ],
+      "deviation": null,
+      "deviation_color": [
+        0.4,
+        0.4,
+        0.4
+      ]
+    },
+    {
+      "residue_number": 94,
+      "residue_name": "GLN",
+      "plddt": 49.19,
+      "color": [
+        1.0,
+        0.494,
+        0.0
+      ],
+      "position": [
+        -11.668000221252441,
+        5.133999824523926,
+        14.642999649047852
+      ],
+      "deviation": null,
+      "deviation_color": [
+        0.4,
+        0.4,
+        0.4
+      ]
+    },
+    {
+      "residue_number": 95,
+      "residue_name": "CYS",
+      "plddt": 54.75,
+      "color": [
+        1.0,
+        0.851,
+        0.0
+      ],
+      "position": [
+        -9.914999961853027,
+        4.313000202178955,
+        11.281999588012695
+      ],
+      "deviation": null,
+      "deviation_color": [
+        0.4,
+        0.4,
+        0.4
+      ]
+    },
+    {
+      "residue_number": 96,
+      "residue_name": "CYS",
+      "plddt": 52.19,
+      "color": [
+        1.0,
+        0.851,
+        0.0
+      ],
+      "position": [
+        -12.604999542236328,
+        5.563000202178955,
+        8.777000427246094
+      ],
+      "deviation": null,
+      "deviation_color": [
+        0.4,
+        0.4,
+        0.4
+      ]
+    },
+    {
+      "residue_number": 97,
+      "residue_name": "THR",
+      "plddt": 56.25,
+      "color": [
+        1.0,
+        0.851,
+        0.0
+      ],
+      "position": [
+        -12.585000038146973,
+        8.880000114440918,
+        10.833999633789062
+      ],
+      "deviation": null,
+      "deviation_color": [
+        0.4,
+        0.4,
+        0.4
+      ]
+    },
+    {
+      "residue_number": 98,
+      "residue_name": "SER",
+      "plddt": 47.12,
+      "color": [
+        1.0,
+        0.494,
+        0.0
+      ],
+      "position": [
+        -8.774999618530273,
+        9.47700023651123,
+        11.189000129699707
+      ],
+      "deviation": null,
+      "deviation_color": [
+        0.4,
+        0.4,
+        0.4
+      ]
+    },
+    {
+      "residue_number": 99,
+      "residue_name": "ILE",
+      "plddt": 51.47,
+      "color": [
+        1.0,
+        0.851,
+        0.0
+      ],
+      "position": [
+        -5.882999897003174,
+        8.704999923706055,
+        8.746000289916992
+      ],
+      "deviation": null,
+      "deviation_color": [
+        0.4,
+        0.4,
+        0.4
+      ]
+    },
+    {
+      "residue_number": 100,
+      "residue_name": "CYS",
+      "plddt": 51.84,
+      "color": [
+        1.0,
+        0.851,
+        0.0
+      ],
+      "position": [
+        -3.8510000705718994,
+        5.704999923706055,
+        10.038999557495117
+      ],
+      "deviation": null,
+      "deviation_color": [
+        0.4,
+        0.4,
+        0.4
+      ]
+    },
+    {
+      "residue_number": 101,
+      "residue_name": "SER",
+      "plddt": 52.94,
+      "color": [
+        1.0,
+        0.851,
+        0.0
+      ],
+      "position": [
+        -0.4129999876022339,
+        5.364999771118164,
+        8.479999542236328
+      ],
+      "deviation": null,
+      "deviation_color": [
+        0.4,
+        0.4,
+        0.4
+      ]
+    },
+    {
+      "residue_number": 102,
+      "residue_name": "LEU",
+      "plddt": 50.25,
+      "color": [
+        1.0,
+        0.851,
+        0.0
+      ],
+      "position": [
+        1.0479999780654907,
+        3.124000072479248,
+        5.735000133514404
+      ],
+      "deviation": null,
+      "deviation_color": [
+        0.4,
+        0.4,
+        0.4
+      ]
+    },
+    {
+      "residue_number": 103,
+      "residue_name": "TYR",
+      "plddt": 50.0,
+      "color": [
+        1.0,
+        0.494,
+        0.0
+      ],
+      "position": [
+        4.103000164031982,
+        2.4149999618530273,
+        8.01099967956543
+      ],
+      "deviation": null,
+      "deviation_color": [
+        0.4,
+        0.4,
+        0.4
+      ]
+    },
+    {
+      "residue_number": 104,
+      "residue_name": "GLN",
+      "plddt": 51.22,
+      "color": [
+        1.0,
+        0.851,
+        0.0
+      ],
+      "position": [
+        2.5260000228881836,
+        -0.5350000262260437,
+        9.935999870300293
+      ],
+      "deviation": null,
+      "deviation_color": [
+        0.4,
+        0.4,
+        0.4
+      ]
+    },
+    {
+      "residue_number": 105,
+      "residue_name": "LEU",
+      "plddt": 54.72,
+      "color": [
+        1.0,
+        0.851,
+        0.0
+      ],
+      "position": [
+        1.8380000591278076,
+        -2.440000057220459,
+        6.6529998779296875
+      ],
+      "deviation": null,
+      "deviation_color": [
+        0.4,
+        0.4,
+        0.4
+      ]
+    },
+    {
+      "residue_number": 106,
+      "residue_name": "GLU",
+      "plddt": 54.12,
+      "color": [
+        1.0,
+        0.851,
+        0.0
+      ],
+      "position": [
+        5.485000133514404,
+        -2.2149999141693115,
+        5.410999774932861
+      ],
+      "deviation": null,
+      "deviation_color": [
+        0.4,
+        0.4,
+        0.4
+      ]
+    },
+    {
+      "residue_number": 107,
+      "residue_name": "ASN",
+      "plddt": 55.84,
+      "color": [
+        1.0,
+        0.851,
+        0.0
+      ],
+      "position": [
+        6.781000137329102,
+        -4.184000015258789,
+        8.477999687194824
+      ],
+      "deviation": null,
+      "deviation_color": [
+        0.4,
+        0.4,
+        0.4
+      ]
+    },
+    {
+      "residue_number": 108,
+      "residue_name": "TYR",
+      "plddt": 47.41,
+      "color": [
+        1.0,
+        0.494,
+        0.0
+      ],
+      "position": [
+        5.043000221252441,
+        -7.335000038146973,
+        7.045000076293945
+      ],
+      "deviation": null,
+      "deviation_color": [
+        0.4,
+        0.4,
+        0.4
+      ]
+    },
+    {
+      "residue_number": 109,
+      "residue_name": "CYS",
+      "plddt": 51.44,
+      "color": [
+        1.0,
+        0.851,
+        0.0
+      ],
+      "position": [
+        6.931000232696533,
+        -7.047999858856201,
+        3.690000057220459
+      ],
+      "deviation": null,
+      "deviation_color": [
+        0.4,
+        0.4,
+        0.4
+      ]
+    },
+    {
+      "residue_number": 110,
+      "residue_name": "ASN",
+      "plddt": 43.81,
+      "color": [
+        1.0,
+        0.494,
+        0.0
+      ],
+      "position": [
+        9.975000381469727,
+        -9.236000061035156,
+        4.478000164031982
+      ],
+      "deviation": null,
+      "deviation_color": [
+        0.4,
+        0.4,
+        0.4
+      ]
+    }
+  ]
+}

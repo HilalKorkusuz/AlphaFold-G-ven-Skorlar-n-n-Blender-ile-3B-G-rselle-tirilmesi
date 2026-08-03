@@ -61,7 +61,7 @@ def add_residue_sphere(position: list[float], color: list[float], name: str) -> 
     material.use_nodes = True
     bsdf = material.node_tree.nodes.get("Principled BSDF")
     bsdf.inputs["Base Color"].default_value = (*color, 1.0)
-    bsdf.inputs["Roughness"].default_value = 0.25
+    bsdf.inputs["Roughness"].default_value = 0.12
     bsdf.inputs["Metallic"].default_value = 0.0
     for spec_key in ("Specular IOR Level", "Specular"):  # Blender sürümüne göre isim değişiyor, ikisini de dene
         if spec_key in bsdf.inputs:
@@ -157,8 +157,8 @@ def setup_lighting(center: list[float], span: float) -> None:
         location=(center[0] + span * 0.8, center[1] - span * 0.6, center[2] + span * 0.9),
     )
     key_light = bpy.context.active_object
-    key_light.data.energy = span * 90
-    key_light.data.size = span * 0.35
+    key_light.data.energy = span * 160
+    key_light.data.size = span * 0.18
     _point_light_at(key_light, center)
 
     # FILL: çok zayıf ışık, sol-alttan -- kendi gölgesini oluşturmayacak kadar
@@ -168,7 +168,7 @@ def setup_lighting(center: list[float], span: float) -> None:
         location=(center[0] - span * 0.9, center[1] - span * 0.3, center[2] - span * 0.2),
     )
     fill_light = bpy.context.active_object
-    fill_light.data.energy = span * 8
+    fill_light.data.energy = span * 5
     fill_light.data.size = span * 0.8
     _point_light_at(fill_light, center)
 
@@ -191,7 +191,7 @@ def setup_lighting(center: list[float], span: float) -> None:
     world.use_nodes = True
     bg_node = world.node_tree.nodes.get("Background")
     if bg_node:
-        bg_node.inputs["Color"].default_value = (0.35, 0.36, 0.38, 1.0)
+        bg_node.inputs["Color"].default_value = (0.12, 0.13, 0.14, 1.0)
         bg_node.inputs["Strength"].default_value = 1.0
 
 

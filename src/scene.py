@@ -10,7 +10,6 @@ Renkler, AlphaFold'un resmi pLDDT skalasıyla aynı eşikleri kullanır:
  
 Kullanım:
     python scene.py P69905
-    python scene.py P69905 ../data/alignment_P69905_2HHB.json   (RMSD katmanı dahil)
 """
 
 import json
@@ -143,7 +142,6 @@ def build_scene(uniprot_id: str, alignment_path: Path | None = None) -> dict:
 def main():
     if len(sys.argv) not in (2, 3):
         print("Kullanim: py -3 scene.py <UNIPROT_ID> [alignment_dosyasi.json]")
-        print("Ornek:    py -3 scene.py P69905 ../data/alignment_P69905_2HHB.json")
         sys.exit(1)
 
     uniprot_id = sys.argv[1]
