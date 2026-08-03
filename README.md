@@ -15,7 +15,62 @@ Model işini bitirdiğinde, kendi yaptığı tahminin doğruluğunu ölçer (pLD
 | average pLDDT: 92.21| average pLDDT: 82.94| average pLDDT: 52.91|
 |çok yüksek güven|yüksek güven|düşük güven|
 
+
+
+## Kurulum
+ 
+```bash
+git clone <repo-url>
+cd protein-confidence-renderer
+pip install -r requirements.txt
+```
+Ayrıca [Blender](https://www.blender.org/download/) kurulu olmalı (4.x sürümü önerilir).
+
+## Kullanım
+ 
+Sıfırdan başlayan biri için, terminale sırayla yazılması gerekenler:
+ 
+```bash
+# 0. Repoyu indir, bağımlılıkları kur
+git clone <repo-url>
+cd protein-confidence-renderer/src
+pip install -r ../requirements.txt
+ 
+# 1. AlphaFold DB'den bir proteinin PDB dosyasını ve güven verisini indirir
+python fetch.py P69905
+ 
+# 2. fetch.py ile indirilen .pdb dosyasından REZİDÜ bazlı pLDDT bilgilerini okur
+python parse.py ../data/P69905.pdb
+ 
+# 1 ve 2'yi tek komutla çalıştırmak istersen (ikisini ayrı ayrı yazmana gerek kalmaz)
+python run_pipeline.py P69905
+ 
+# 3. (isteğe bağlı) Deneysel bir PDB yapısıyla karşılaştırıp RMSD hesaplar
+python align.py P69905 2HHB B
+ 
+# 4. pLDDT'yi (ve varsa RMSD sapma verisini) Blender'ın okuyacağı bir sahne dosyasına dönüştürür.
+python scene.py P69905 ../data/alignment_P69905_2HHB.json
+ 
+# 5. Blender'ı arka planda çalıştırıp renklendirilmiş 3B render alır. Kodu,kendi Blender kurulum yoluna göre düzenle.
+"<blender_yolu>/blender.exe" --background --python blender_render.py -- ../data/scene_P69905.json plddt
+```
+ 
+**Notlar:**
+- Windows + Anaconda Prompt kullanıyorsan, `python` yerine `py -3` yazman gerekebilir (sistemde birden fazla Python sürümü varsa).
+- 3. ve 4. adımlar isteğe bağlı — sadece pLDDT görselleştirmesi istiyorsan 1-2 (ya da `run_pipeline.py`) → `scene.py <ID>`  → `blender_render.py` yeterli.
+- Çıktı, `data/scene_<UNIPROT_ID>_render_<renk_modu>.png` olarak kaydedilir.
+
+## Kullanılan Teknolojiler
+- **Python** — pipeline'ın omurgası
+- **Biopython** — PDB dosyalarını okuma, rezidü/atom düzeyinde veri çıkarma, `Superimposer` ile yapısal hizalama, `PairwiseAligner` ile dizi hizalama
+- **AlphaFold DB API** — yapı tahminlerine ve güven verisine erişim
+- **RCSB PDB API** — deneysel referans yapılarına erişim
+- **Blender (bpy)** — headless, script-tabanlı 3B sahne kurulumu ve render alma
+
 # Kaynakça
 https://www.uniprot.org/
 https://alphafold.ebi.ac.uk/
 https://www.nature.com/articles/s41586-021-03819-2
+## Yazar
+ 
+*Hilal Korkusuz- Ytü MBG mezunu- www.linkedin.com/in/hilal-korkusuz-404039237 *
