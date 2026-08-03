@@ -11,10 +11,18 @@ Model işini bitirdiğinde, kendi yaptığı tahminin doğruluğunu ölçer (pLD
  
 | Hemoglobin (P69905) | p53 (P04637) | İnsülin (P01308) |
 |---|---|---|
-| <img width="557" height="387" alt="image" src="https://github.com/user-attachments/assets/df675e2e-dcd7-4ea4-8cb4-b160a76f4f6b" /> | <img width="622" height="382" alt="image" src="https://github.com/user-attachments/assets/a840d646-785d-45de-8e3b-0af0b6138067" /> | <img width="607" height="392" alt="image" src="https://github.com/user-attachments/assets/d2e3b78c-4027-413f-81a4-d76c4e28f12b" />
-| average pLDDT: 92.21| average pLDDT: 82.94| average pLDDT: 52.91|
+| <img width="550" height="385" alt="image" src="https://github.com/user-attachments/assets/df675e2e-dcd7-4ea4-8cb4-b160a76f4f6b" /> | <img width="550" height="385" alt="image" src="https://github.com/user-attachments/assets/a840d646-785d-45de-8e3b-0af0b6138067" /> | <img width="550" height="385" alt="image" src="https://github.com/user-attachments/assets/d2e3b78c-4027-413f-81a4-d76c4e28f12b" />
+| ortalama pLDDT: 92.21| ortalama pLDDT: 82.94| ortalama pLDDT: 52.91|
 |çok yüksek güven|yüksek güven|düşük güven|
 
+## Proje Çıktıları
+| Hemoglobin (P69905) | p53 (P04637) | İnsülin (P01308) |
+|---|---|---|
+| <img width="1200" height="900" alt="scene_P69905_render_plddt" src="https://github.com/user-attachments/assets/a90835c7-0e25-49cb-88ed-68b43638f380" /> | <img  width="1200" height="900" alt="scene_P04637_render_plddt" src="https://github.com/user-attachments/assets/5180a280-b124-4c87-9eb9-5fc34b4f2119" /> | <img width="1200" height="900" alt="scene_P01308_render_plddt" src="https://github.com/user-attachments/assets/d941ff0c-9daf-4014-808f-8e83fa757658" />
+| ortalama pLDDT: 92.21| ortalama pLDDT: 82.94| ortalama pLDDT: 52.91|
+|çok yüksek güven|yüksek güven|düşük güven|
+
+##İsteğe bağlı kısım
 
 
 ## Kurulum
@@ -49,9 +57,10 @@ python run_pipeline.py P69905
 python align.py P69905 2HHB B
  
 # 4. pLDDT'yi (ve varsa RMSD sapma verisini) Blender'ın okuyacağı bir sahne dosyasına dönüştürür.
-python scene.py P69905 ../data/alignment_P69905_2HHB.json
+python scene.py P69905 [../data/alignment_P69905_2HHB.json(isteğe bağlı eklenecek)]
  
-# 5. Blender'ı arka planda çalıştırıp renklendirilmiş 3B render alır. Kodu,kendi Blender kurulum yoluna göre düzenle.
+# 5. Blender'ı arka planda çalıştırıp renklendirilmiş 3B render alır.
+Kodu,kendi Blender kurulum yoluna göre düzenle.
 "<blender_yolu>/blender.exe" --background --python blender_render.py -- ../data/scene_P69905.json plddt
 ```
  
