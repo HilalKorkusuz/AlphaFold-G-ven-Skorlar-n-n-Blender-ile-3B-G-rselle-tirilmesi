@@ -1,13 +1,16 @@
 # AlphaFold Güven Skorlarının Blender ile 3B Görselleştirilmesi
 
 ## Amacım
+
 Bu projede amacım, AlphaFold'un çalışma mantığını öğrenmek, AlphaFold tarafından üretilen protein yapılarının pLDDT güven skorlarını inceleyerek  Blender 3D ile bu verileri bilimsel açıdan anlamlı 3B görsellere dönüştürmektir. Aynı zamanda bu projeyle yeni öğrenmeye başladığım Python dilini pratik etmek ve biyoinformatik odaklı ilk büyük projemi geliştirmeyi amaçladım.
 Proje geliştirme sürecinde Claude gibi yapay zekâ destekli araçlardan kod geliştirme, hata ayıklama ve iyileştirme önerileri almak için yararlandım. Tüm kodlar test edilerek projeye tarafımdan entegre edilmiştir.
 
 ## AlphaFold nedir?
+
 AlphaFold aminoasit dizisinden proteinin 3 boyutlu yapısını tahmin eden bir yapay zeka sistemidir. MSA (Çoklu Dizi Hizalaması), anlamına gelir; üç veya daha fazla protein, DNA veya RNA dizisinin aynı anda yan yana getirilip karşılaştırılması işlemidir. Bu yöntem temel olarak evrimsel ilişkileri bulma, ortak özellikleri ortaya çıkarma ve benzerlikleri inceleme amaçlarıyla kullanılır. AlphaFold gücünü MSA verilerinden alır. Yapısı bilinmeyen bir protein dizisi, yapısı laboratuvarda (X-ışını kristalografisi vb.) çözülmüş bilinen proteinlerle MSA ile hizalanır.Benzer diziye sahip bölgelerin, üç boyutlu uzayda da benzer şekilde katlanacağı varsayılarak bilinmeyen proteinin modeli çıkarılır. 
 
 ## PLDDT skoru
+
 Model işini bitirdiğinde, kendi yaptığı tahminin doğruluğunu ölçer (pLDDT skoru).
 Güven dağılımı:
 🟦 Çok yüksek (>90): 206
@@ -24,10 +27,34 @@ Güven dağılımı:
 |çok yüksek güven|yüksek güven|düşük güven|
 
 ## Proje Çıktıları
+
 | Hemoglobin (P69905) | p53 (P04637) | İnsülin (P01308) |
 |---|---|---|
 | <img width="1200" height="900" alt="scene_P69905_render_plddt" src="https://github.com/user-attachments/assets/5b6e1fa8-9b06-42e3-a792-95ed22470b2e" /> |<img width="1200" height="900" alt="scene_P04637_render_plddt" src="https://github.com/user-attachments/assets/956ad080-59de-4c87-8b53-1159feb62ab1" /> | <img width="1200" height="900" alt="scene_P01308_render_plddt" src="https://github.com/user-attachments/assets/02c93fcd-73c3-44a9-91f8-ad221981a50f" />
 
+## Blender İçerisinde İnceleme
+
+Proje yalnızca statik görseller üretmez. Oluşturulan sahne Blender içerisinde açılarak protein yapısı gerçek zamanlı olarak incelenebilir.
+<img width="1822" height="945" alt="image" src="https://github.com/user-attachments/assets/5f60982f-1c03-46eb-ad7b-dcd0bf21f43e" />
+<img width="1860" height="957" alt="image" src="https://github.com/user-attachments/assets/a4db30d7-b9f5-4acf-ad56-512ab3af871e" />
+
+
+
+## Dosya Yapısı
+
+```
+├── data/                  # AlphaFold PDB dosyaları ve oluşturulan JSON çıktıları
+├── src/
+│   ├── fetch.py           # AlphaFold DB'den protein yapısını indirir
+│   ├── parse.py           # pLDDT skorlarını okur ve analiz eder
+│   ├── scene.py           # Blender için sahne verisini oluşturur
+│   ├── blender_render.py  # Blender'da 3B görselleştirme ve render işlemlerini gerçekleştirir
+│   └── run_pipeline.py    # Tüm iş akışını otomatik olarak çalıştırır
+├── README.md
+├── requirements.txt
+├── .gitignore
+└── .gitattributes
+```
 ## Kurulum
 
 ```bash
@@ -96,11 +123,26 @@ Saved: ..\data\scene_P69905_render_plddt.png'
 Time: 00:01.86 (Saving: 00:00.20)
 Render kaydedildi: ..\data\scene_P69905_render_plddt.png
 Blender quit
+
+# 5. Proteini Blender içerisinde etkileşimli olarak incelemek isterseniz:
+1. `blender_render.py` dosyasını Blender'ın **Scripting** sekmesinde açın.
+2. Dosyanın sonundaki aşağıdaki satırları yorum satırı haline getirin:
+```python
+if __name__ == "__main__":
+    main() ```
+3. Daha sonra kendi `scene_*.json` dosyanızın yolunu kullanarak aşağıdaki kodu çalıştırın:
+render_scene(
+    Path(r"/path/to/scene_P69905.json"),
+    Path(r"/path/to/test_render.png")
+)
+Böylece protein modeli Blender sahnesinde oluşturulur ve gerçek zamanlı olarak döndürülüp incelenebilir.
 ```
  
 **Notlar:**
 - Windows + Anaconda Prompt kullanıyorsan, `python` yerine `py -3` yazmanız gerekebilir (sistemde birden fazla Python sürümü varsa)
 - Çıktı, `data/scene_<UNIPROT_ID>_render_<renk_modu>.png` olarak kaydedilir.
+
+
 
 ## Kullanılan Teknolojiler
 
@@ -110,6 +152,7 @@ Blender quit
 - UniProt
 - RCSB Protein Data Bank
 - Blender 4.x
+
 ## Geliştirme Araçları
 
 - Anaconda
