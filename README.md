@@ -53,20 +53,16 @@ python parse.py ../data/P69905.pdb
 # 1 ve 2'yi tek komutla çalıştırmak istersen (ikisini ayrı ayrı yazmana gerek kalmaz)
 python run_pipeline.py P69905
  
-# 3. (isteğe bağlı) Deneysel bir PDB yapısıyla karşılaştırıp RMSD hesaplar
-python align.py P69905 2HHB B
+# 3. pLDDT'yi Blender'ın okuyacağı bir sahne dosyasına dönüştürür.
+python scene.py P69905
  
-# 4. pLDDT'yi (ve varsa RMSD sapma verisini) Blender'ın okuyacağı bir sahne dosyasına dönüştürür.
-python scene.py P69905 [../data/alignment_P69905_2HHB.json(isteğe bağlı eklenecek)]
- 
-# 5. Blender'ı arka planda çalıştırıp renklendirilmiş 3B render alır.
+# 4. Blender'ı arka planda çalıştırıp renklendirilmiş 3B render alır.
 Kodu,kendi Blender kurulum yoluna göre düzenle.
-"<blender_yolu>/blender.exe" --background --python blender_render.py -- ../data/scene_P69905.json plddt
+"<blender_yolu>/blender.exe" --background --python blender_render.py 
 ```
  
 **Notlar:**
-- Windows + Anaconda Prompt kullanıyorsan, `python` yerine `py -3` yazman gerekebilir (sistemde birden fazla Python sürümü varsa).
-- 3. ve 4. adımlar isteğe bağlı — sadece pLDDT görselleştirmesi istiyorsan 1-2 (ya da `run_pipeline.py`) → `scene.py <ID>`  → `blender_render.py` yeterli.
+- Windows + Anaconda Prompt kullanıyorsan, `python` yerine `py -3` yazmanız gerekebilir (sistemde birden fazla Python sürümü varsa)
 - Çıktı, `data/scene_<UNIPROT_ID>_render_<renk_modu>.png` olarak kaydedilir.
 
 ## Kullanılan Teknolojiler
@@ -75,6 +71,7 @@ Kodu,kendi Blender kurulum yoluna göre düzenle.
 - **AlphaFold DB API** — yapı tahminlerine ve güven verisine erişim
 - **RCSB PDB API** — deneysel referans yapılarına erişim
 - **Blender (bpy)** — headless, script-tabanlı 3B sahne kurulumu ve render alma
+- **Claude** - kod yazma ve konuyu anlatma konusunda kullandım
 
 # Kaynakça
 https://www.uniprot.org/
