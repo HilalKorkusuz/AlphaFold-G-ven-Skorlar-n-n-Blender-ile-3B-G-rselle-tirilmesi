@@ -54,6 +54,7 @@ Proje yalnızca statik görseller üretmez. Oluşturulan sahne Blender içerisin
 ├── requirements.txt
 ├── .gitignore
 └── .gitattributes
+├── images/
 ```
 ## Kurulum
 
