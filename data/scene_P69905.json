@@ -1,6 +1,6 @@
 {
   "uniprot_id": "P69905",
-  "pdb_path": "C:\\Users\\hilal\\protein-projesi\\AlphaFold G\u00fcven Skorlar\u0131n\u0131n Blender ile 3B G\u00f6rselle\u015ftirilmesi\\data\\P69905.pdb",
+  "pdb_path": "C:\\Users\\hilal\\protein-projesi\\alphafold-plddt-to-blender\\data\\P69905.pdb",
   "global_rmsd": null,
   "residues": [
     {
